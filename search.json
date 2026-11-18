@@ -1,0 +1,202 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Evolucijska in populacijska genetika",
+    "section": "",
+    "text": "Uvod\nTukaj so zbrana navodila za vaje pri predmetu Evolucijska in populacijska genetika (EPG). Sproti se posodabljajo, zato jih vedno odprite s te strani.",
+    "crumbs": [
+      "Uvod"
+    ]
+  },
+  {
+    "objectID": "index.html#vaje",
+    "href": "index.html#vaje",
+    "title": "Evolucijska in populacijska genetika",
+    "section": "Vaje",
+    "text": "Vaje\n\n\n\nVaja\nTema\n\n\n\n\n\n0\nUvod v R, RStudio in Quarto\nkmalu\n\n\n1\nNadzor različic z Gitom in GitHubom\nna voljo\n\n\n2\nSNP-ji in PLINK: od VCF do filtriranih podatkov\nkmalu\n\n\n3\nGenetska raznolikost in diferenciacija\nkmalu\n\n\n4\nPopulacijska struktura\nkmalu\n\n\n5\nSorodnost, inbriding in ROH\nkmalu",
+    "crumbs": [
+      "Uvod"
+    ]
+  },
+  {
+    "objectID": "index.html#kaj-se-boste-naučili",
+    "href": "index.html#kaj-se-boste-naučili",
+    "title": "Evolucijska in populacijska genetika",
+    "section": "Kaj se boste naučili",
+    "text": "Kaj se boste naučili\n\nR in RStudio za analizo podatkov in grafe,\nQuarto za ponovljiva poročila, v katerih sta koda in besedilo skupaj,\nGit in GitHub za nadzor različic (version control) in hrambo vaših skript,\nPLINK za delo z velikimi genotipskimi podatki (SNP-ji).",
+    "crumbs": [
+      "Uvod"
+    ]
+  },
+  {
+    "objectID": "index.html#biološka-zgodba-orel-belorepec",
+    "href": "index.html#biološka-zgodba-orel-belorepec",
+    "title": "Evolucijska in populacijska genetika",
+    "section": "Biološka zgodba: orel belorepec",
+    "text": "Biološka zgodba: orel belorepec\nOd vaje 2 naprej bomo analizirali genomske podatke orla belorepca (Haliaeetus albicilla) iz članka:\n\nHansen, C. C. R., Láruson, Á. J., Rasmussen, J. A., et al. (2023). Genomic diversity and differentiation between island and mainland populations of white-tailed eagles (Haliaeetus albicilla). Molecular Ecology, 32, 1925–1942. https://doi.org/10.1111/mec.16858\n\nČlanek je prosto dostopen: PDF članka.\nSkozi vaje bomo odgovarjali na isto vprašanje kot avtorji: ali so otoške populacije (Islandija, Grenlandija) manj raznolike, bolj inbridirane in bolj diferencirane od celinskih, in kako se je raznolikost spremenila od historičnih do sodobnih vzorcev?",
+    "crumbs": [
+      "Uvod"
+    ]
+  },
+  {
+    "objectID": "index.html#kako-uporabljati-to-knjigo",
+    "href": "index.html#kako-uporabljati-to-knjigo",
+    "title": "Evolucijska in populacijska genetika",
+    "section": "Kako uporabljati to knjigo",
+    "text": "Kako uporabljati to knjigo\n\nNa levi je seznam vaj, na desni kazalo trenutne strani. Iskalnik je levo zgoraj.\nVsak blok kode ima desno zgoraj gumb za kopiranje.\nSlike povečate s klikom.\n\nKnjiga je tudi v repozitoriju https://github.com/UrskaGeric/EPG-vaje. Ko na vaji 1 spoznate Git, ga lahko klonirate in pred vsako vajo posodobite:\ngit clone https://github.com/UrskaGeric/EPG-vaje.git\ncd EPG-vaje\ngit pull\nKnjigo nato odprete tudi brez interneta z dvoklikom na index.html. Tega repozitorija ne urejajte; svoje skripte shranjujte v svoj repozitorij EPG-2026-priimek (glejte vajo 1).",
+    "crumbs": [
+      "Uvod"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "",
+    "text": "Cilji vaje\nPo tej vaji boste znali:",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#cilji-vaje",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#cilji-vaje",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "",
+    "text": "razložiti, kaj je nadzor različic (version control) in zakaj je pomemben za ponovljivo znanost (reproducible science),\nločiti med Gitom (orodje na vašem računalniku) in GitHubom (spletna storitev),\nnamestiti in nastaviti Git ter ga povezati z GitHub računom,\nustvariti repozitorij (repository), ga klonirati (clone) na računalnik ter uporabljati osnovne ukaze status, add, commit, push in pull,\nuporabljati Git neposredno iz RStudia,\npripraviti svoj repozitorij za vaje EPG, kamor boste do konca semestra nalagali skripte iz vseh vaj.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#kaj-je-nadzor-različic",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#kaj-je-nadzor-različic",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "Kaj je nadzor različic?",
+    "text": "Kaj je nadzor različic?\nVerjetno poznate mapo, v kateri so datoteke analiza.R, analiza_v2.R, analiza_v2_popravljeno.R in analiza_KONCNO_res.R. Čez en mesec ne veste več, katera je prava in kaj ste v kateri spremenili. Nadzor različic (version control) to težavo reši sistematično: vsako pomembno spremembo shrani kot posnetek stanja projekta (snapshot), skupaj s časom, avtorjem in kratkim opisom.\nZa raziskovalno delo je to pomembno, ker:\n\nponovljivost: vedno lahko pokažete, s katero različico skripte ste dobili rezultat v članku,\nvarnost: če nekaj pokvarite ali izbrišete, se vrnete na prejšnje delujoče stanje,\nsodelovanje: več ljudi lahko dela na istem projektu, ne da bi si prepisovali datoteke,\nvarnostna kopija: kopija projekta je shranjena tudi na spletu, ne le na vašem prenosniku.\n\nVečina orodij, ki jih bomo uporabljali v bioinformatiki (PLINK, R paketi, analizne verige, kot je Snakemake), je razvitih in objavljenih na GitHubu. Ob objavi članka revije vedno pogosteje zahtevajo, da je koda javno dostopna, najpogosteje prav v GitHub repozitoriju.\n\nGit in GitHub\nGit je program za nadzor različic, ki ga namestite na svoj računalnik. Spremembe beleži lokalno in deluje tudi brez interneta. GitHub je spletna storitev, ki gosti kopije Git repozitorijev. Omogoča deljenje, sodelovanje in varnostno kopijo.\n\n\n\n\n\n\n\n\n\nGit\nGitHub\n\n\n\n\nKaj je\nprogram (orodje)\nspletna storitev\n\n\nKje teče\nlokalno (local), na vašem računalniku\nna spletu (github.com)\n\n\nKako ga uporabljamo\nukazna vrstica (command line), RStudio, VS Code\nspletni brskalnik, GitHub Desktop\n\n\nNamen\nbeleženje različic datotek v repozitoriju\nhramba in deljenje kopije repozitorija, sodelovanje\n\n\nAlternativa\n– (de facto standard)\nGitLab, Bitbucket\n\n\n\nGit in GitHub se pogovarjata predvsem z dvema ukazoma: s push pošljete svoje spremembe na GitHub, s pull pa spremembe z GitHuba prenesete k sebi.\n\n\n\nGit in GitHub: s push pošljemo spremembe na GitHub, s pull jih prenesemo nazaj na računalnik.\n\n\n\n\n\n\n\n\nNasvetKljučna ideja\n\n\n\nGit shranjuje posnetke stanja projekta (angl. commits) na vašem računalniku. GitHub hrani skupno kopijo te zgodovine na spletu, da se lahko z njo sinhronizirate (sync) vi (z več računalnikov) in vaši sodelavci (collaborators).\n\n\nGit je porazdeljen sistem za nadzor različic (distributed version control system): vsak uporabnik ima na svojem računalniku celoten repozitorij z vso zgodovino (history) in delovno kopijo datotek (working copy). Strežnik (server) (npr. GitHub) je le skupna točka, prek katere se uporabniki sinhronizirajo.\n\n\n\nPorazdeljen sistem za nadzor različic. Vsak računalnik ima svoj lokalni repozitorij in delovno mapo ter se z GitHubom sinhronizira s push in pull.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#kako-deluje-git-kje-živi-vaša-koda",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#kako-deluje-git-kje-živi-vaša-koda",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "Kako deluje Git: kje živi vaša koda",
+    "text": "Kako deluje Git: kje živi vaša koda\nPri delu z Gitom se datoteke premikajo med štirimi „prostori“:\n\n\n\n\n\n\n\n\nDel\nKje\nKaj je\n\n\n\n\nDelovna mapa (working directory)\nvaš računalnik\nmapa z datotekami, ki jih urejate (v RStudiu, VS Code, Excelu …)\n\n\nPripravljalno območje (staging area, index)\nvaš računalnik\n„čakalnica“ za spremembe, ki ste jih izbrali z git add\n\n\nLokalni repozitorij (local repository)\nvaš računalnik (skrita mapa .git)\nzgodovina vseh posnetkov (commitov) na vašem računalniku\n\n\nOddaljeni repozitorij (remote repository)\nnpr. GitHub\nskupna kopija projekta na spletu\n\n\n\nSpremembe ostanejo lokalne, dokler jih ne pošljete na GitHub s push. Spremembe drugih (ali svoje z drugega računalnika) prenesete s pull.\n\n\n\nPotek dela z Gitom: delovna mapa → pripravljalno območje (add) → lokalni repozitorij (commit) → oddaljeni repozitorij (push). Vir: CloudStudio.com.au.\n\n\nUkaz pull je v resnici kombinacija dveh ukazov: fetch (prenesi spremembe z GitHuba v lokalni repozitorij) in merge (združi jih z vašimi datotekami v delovni mapi).\nSpodnja slika povzema ukaze, ki premikajo spremembe med temi prostori. Večino jih bomo spoznali na vaji.\n\n\n\nPregled ukazov med delovno mapo, pripravljalnim območjem, lokalnim in oddaljenim repozitorijem. Sivi pravokotniki označujejo, kaj primerja ukaz git diff.\n\n\n\n\n\n\n\n\nOpombaVsakodnevni cikel",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#sec-namestitev",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#sec-namestitev",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "Namestitev in nastavitev",
+    "text": "Namestitev in nastavitev\n\nGitHub račun\n\nPojdite na https://github.com/ in izberite Sign up.\nUporabniško ime izberite premišljeno, saj bo vidno v povezavah do vaših repozitorijev (npr. https://github.com/ime-priimek). Priporočamo ime, ki ga boste lahko uporabljali tudi kasneje v raziskovalnem delu.\nKot študenti lahko zaprosite za brezplačen GitHub Education paket (Student Developer Pack). Za vaje ga ne potrebujete, je pa uporaben.\n\n\n\nNamestitev Gita\nWindows: prenesite Git z https://git-scm.com/download/win in ga namestite s privzetimi nastavitvami. Skupaj z Gitom se namesti tudi Git Bash, ukazna vrstica, v kateri bomo izvajali ukaze, in Git Credential Manager, ki poskrbi za prijavo v GitHub.\nmacOS: odprite aplikacijo Terminal in vpišite git --version. Če Git še ni nameščen, vas bo sistem vprašal, ali želite namestiti Command Line Developer Tools. Potrdite.\nLinux: sudo apt install git (Ubuntu/Debian).\nPreverite, ali namestitev deluje. Odprite Git Bash (Windows) ali Terminal (macOS/Linux) in vpišite:\ngit --version\ngit version 2.46.0.windows.1\n\n\nPrva nastavitev: kdo ste\nGit vsak commit podpiše z imenom in e-naslovom. To nastavite enkrat na vsakem računalniku. Uporabite isti e-naslov kot pri GitHub računu:\ngit config --global user.name \"Ime Priimek\"\ngit config --global user.email \"vas.naslov@primer.si\"\ngit config --global init.defaultBranch main\nZadnja vrstica poskrbi, da se glavna veja v novih repozitorijih imenuje main (enako kot na GitHubu).\nNastavitve preverite z:\ngit config --global --list\n\n\n\n\n\n\nNasvetNastavitev iz R\n\n\n\nIsto lahko naredite tudi v R konzoli s paketom usethis:\ninstall.packages(\"usethis\")\nusethis::use_git_config(user.name = \"Ime Priimek\",\n                        user.email = \"vas.naslov@primer.si\")\n\n\n\n\nPrijava v GitHub iz računalnika (authentication)\nGitHub za push ne sprejme več gesla vašega računa. Potrebuje varno prijavo:\n\nWindows: ob prvem git clone (zasebnega repozitorija) ali git push se odpre okno Git Credential Manager. Izberite Sign in with your browser in potrdite dostop v brskalniku. Prijava se shrani, zato tega ne boste več ponavljali.\n\n\n\n\nOb prvi povezavi Git Bash z GitHubom potrdite dostop za Git Credential Manager (Authorize git-ecosystem).\n\n\n\nmacOS/Linux ali če zgornje ne deluje: ustvarite osebni dostopni žeton (Personal Access Token, PAT) in ga shranite. Najlažje to naredite iz R:\n\ninstall.packages(c(\"usethis\", \"gitcreds\"))\nusethis::create_github_token()   # odpre GitHub v brskalniku; ustvarite žeton in ga kopirajte\ngitcreds::gitcreds_set()         # prilepite žeton, ko vas vpraša\n\n\n\n\n\n\nOpozoriloŽeton je kot geslo\n\n\n\nŽetona nikoli ne zapisujte v skripte in ga ne nalagajte na GitHub.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#prvi-repozitorij-v-git-bashu",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#prvi-repozitorij-v-git-bashu",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "Prvi repozitorij v Git Bashu",
+    "text": "Prvi repozitorij v Git Bashu\nNajprej se naučimo ukaze v ukazni vrstici. Tako boste razumeli, kaj se dogaja v ozadju, ko boste kasneje klikali gumbe v RStudiu.\n\nUstvarite repozitorij na GitHubu\n\nNa GitHubu kliknite + (desno zgoraj) → New repository.\nIzpolnite:\n\nRepository name: npr. git-vaja\nVisibility: Private ali Public\nobkljukajte Add a README file. README je „domača stran“ repozitorija s kratkim opisom projekta.\n\nKliknite Create repository.\n\n\n\n\nObrazec za nov repozitorij: ime, zasebnost (Private) in README.\n\n\n\n\ngit clone: prenesite repozitorij na računalnik\nNa strani repozitorija kliknite zeleni gumb Code in kopirajte HTTPS naslov. Na voljo so še druge možnosti:\n\n\n\n\n\n\n\nMožnost\nKdaj jo uporabimo\n\n\n\n\nHTTPS\nkloniranje z ukazom git clone (Git Bash, RStudio)\n\n\nOpen with GitHub Desktop\nče raje uporabljate grafični program\n\n\nDownload ZIP\nenkraten prenos brez zgodovine Gita. Pri vajah tega ne uporabljajte.\n\n\n\n\n\n\nGumb Code na strani repozitorija. HTTPS naslov kopirate z ikono desno od povezave.\n\n\nV Git Bashu se premaknite v mapo, kjer želite imeti svoje projekte, in klonirajte repozitorij:\nmkdir -p ~/Documents/GitHub\ncd ~/Documents/GitHub\ngit clone https://github.com/UPORABNISKO-IME/git-vaja.git\nCloning into 'git-vaja'...\nremote: Enumerating objects: 3, done.\nremote: Counting objects: 100% (3/3), done.\nremote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0\nReceiving objects: 100% (3/3), done.\nPremaknite se v novo mapo repozitorija:\ncd git-vaja\nGit Bash v vrstici z ukazom pokaže nekaj koristnih informacij: zeleno uporabniško ime in računalnik, rumeno trenutno mapo in, kadar ste v Git repozitoriju, modro trenutno vejo (branch, npr. (main)).\n\n\n\nVrstica z ukazom v Git Bashu: uporabnik in računalnik (zeleno), MINGW64 (vijolično), mapa (rumeno) in veja (modro).\n\n\n\n\ngit status: kaj se je spremenilo?\ngit status je ukaz, ki ga boste uporabljali najpogosteje. Pokaže stanje delovne mape glede na zadnji commit.\ngit status\nOn branch main\nYour branch is up to date with 'origin/main'.\n\nnothing to commit, working tree clean\nV mapo dodajte novo datoteko, npr. scripts/test.R (ustvarite mapo scripts in v njej prazno datoteko). Ponovno poženite git status:\nOn branch main\nYour branch is up to date with 'origin/main'.\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        scripts/\n\nnothing added to commit but untracked files present (use \"git add\" to track)\nNove datoteke, ki jih Git še ne spremlja (untracked), so izpisane rdeče.\n\n\n\nDatoteke, ki jih Git še ne spremlja, so izpisane rdeče.\n\n\n\n\ngit add: pripravite spremembe (stage)\ngit add scripts/test.R   # ena datoteka\ngit add .                # vse spremembe v trenutni mapi (previdno!)\nPonovno preverite z git status. Datoteke, pripravljene za commit, so izpisane zeleno:\nChanges to be committed:\n  (use \"git restore --staged &lt;file&gt;...\" to unstage)\n        new file:   scripts/test.R\n\n\n\nPo git add je datoteka izpisana zeleno in pripravljena za commit.\n\n\n\n\ngit commit: shranite posnetek stanja (commit)\ngit commit -m \"Dodaj testno skripto\"\n[main 0c879b4] Dodaj testno skripto\n 1 file changed, 0 insertions(+), 0 deletions(-)\n create mode 100644 scripts/test.R\nVsak commit dobi enolično oznako (hash, tukaj 0c879b4), po kateri se lahko kasneje vrnete nanj.\n\n\n\n\n\n\nNasvetDobro sporočilo commita\n\n\n\nSporočilo naj na kratko pove, kaj ste spremenili, npr. Dodaj filtriranje SNP-jev po MAF ali Popravi os y na PCA grafu. Izogibajte se sporočilom, kot so popravki, asdf ali nova verzija. Čez en mesec iz njih ne boste vedeli ničesar.\n\n\n\nBližnjica: git commit -a\ngit commit -a -m \"Posodobi obstoječe skripte\"\nUkaz v enem koraku pripravi in shrani spremembe že spremljanih datotek. Novih datotek (untracked) ne doda. Dokler se ne navadite, raje uporabljajte ločena koraka git add in git commit.\n\n\n\ngit push: pošljite (push) spremembe na GitHub\ngit push\nTo https://github.com/UPORABNISKO-IME/git-vaja.git\n   c82b3ae..0c879b4  main -&gt; main\nOsvežite stran repozitorija na GitHubu. Nova datoteka in commit sta zdaj vidna tudi tam.\n\n\n\nRepozitorij na GitHubu po push: nova mapa in sporočilo commita.\n\n\n\n\ngit pull: prenesite (pull) spremembe z GitHuba\nNa GitHubu v brskalniku uredite datoteko README.md (ikona svinčnika → Commit changes). S tem simulirate spremembo, ki jo je naredil nekdo drug ali vi na drugem računalniku. Nato na računalniku:\ngit pull\nUpdating 0c879b4..5e1a2f3\nFast-forward\n README.md | 2 ++\n 1 file changed, 2 insertions(+)\nČe na GitHubu ni nič novega, Git izpiše Already up to date.\n\n\n\n\n\n\nOpozoriloDobra navada\n\n\n\nNa začetku vsakega dela najprej poženite git pull, šele nato začnite urejati datoteke. Tako se izognete konfliktom (merge conflicts).\n\n\n\n\ngit log in git diff: zgodovina (log) in razlike (diff)\ngit log --oneline     # kratek seznam vseh commitov\ngit diff              # kaj ste spremenili, a še niste dodali z git add\ngit diff --staged     # kaj je pripravljeno za naslednji commit\n5e1a2f3 (HEAD -&gt; main, origin/main) Update README.md\n0c879b4 Dodaj testno skripto\nc82b3ae Initial commit\n\n\ngit init: nov repozitorij iz obstoječe mape\nČe imate projekt že na računalniku in ga želite šele zdaj dati pod nadzor različic:\ncd pot/do/projekta\ngit init\nInitialized empty Git repository in .../projekt/.git/\nGit ustvari skrito mapo .git, v kateri hrani vso zgodovino (HEAD, objects, refs …). Te mape ne urejajte ročno in je ne brišite, saj s tem izbrišete celotno zgodovino.\nDa lokalni repozitorij povežete z GitHubom, na GitHubu ustvarite prazen repozitorij (brez README) in nato:\ngit remote add origin https://github.com/UPORABNISKO-IME/projekt.git\ngit push -u origin main\n\n\n\n\n\n\nOpombaclone ali init?\n\n\n\n\ngit clone: kopija obstoječega repozitorija z GitHuba. To je najpogostejši način in ga bomo uporabljali na vajah.\ngit init: nov lokalni repozitorij, ki ga kasneje povežete z GitHubom.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#git-v-rstudiu",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#git-v-rstudiu",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "Git v RStudiu",
+    "text": "Git v RStudiu\nNa vajah bomo delali v RStudiu, ki ima vgrajen zavihek Git. Ukazi so enaki kot v Git Bashu, le da jih izvajate s klikom.\n\nPovežite RStudio z Gitom\n\nTools → Global Options → Git/SVN.\nObkljukajte Enable version control interface for RStudio projects.\nV polju Git executable mora biti pot do Gita, na Windows običajno C:/Program Files/Git/bin/git.exe. Če je polje prazno, poiščite datoteko s Browse.\nPonovno zaženite RStudio.\n\n\n\nNov RStudio projekt iz GitHub repozitorija\n\nFile → New Project → Version Control → Git.\nV Repository URL prilepite HTTPS naslov repozitorija z GitHuba.\nIzberite mapo (Create project as subdirectory of), npr. Documents/GitHub.\nKliknite Create Project.\n\nRStudio repozitorij klonira, ustvari v njem RStudio projekt (.Rproj) in ga odpre. Desno zgoraj se pojavi zavihek Git.\n\n\nZavihek Git\n\n\n\n\n\n\n\n\nGumb / stolpec\nUkaz v Gitu\nKaj naredi\n\n\n\n\nkljukica Staged\ngit add\npripravi datoteko za commit\n\n\nDiff\ngit diff\npokaže spremembe po vrsticah (zeleno dodano, rdeče izbrisano)\n\n\nCommit\ngit commit\nodpre okno, kjer napišete sporočilo in shranite posnetek\n\n\nPush (zelena puščica gor)\ngit push\npošlje commite na GitHub\n\n\nPull (modra puščica dol)\ngit pull\nprenese spremembe z GitHuba\n\n\nura (History)\ngit log\npokaže zgodovino commitov\n\n\n\n\n\n\nRStudio z odprtim repozitorijem: zavihek Git (desno zgoraj) z gumbi Diff, Commit, Pull, Push in History ter zavihek Terminal z Git Bashem (levo spodaj).\n\n\nPomen črk v stolpcu Status: ? nova datoteka, ki je Git še ne spremlja; A dodana; M spremenjena (modified); D izbrisana.\n\n\n\n\n\n\nNasvetTerminal v RStudiu\n\n\n\nRStudio ima poleg konzole tudi zavihek Terminal (Tools → Terminal → New Terminal). Na Windows ga lahko nastavite tako, da uporablja Git Bash (Tools → Global Options → Terminal → New terminals open with: Git Bash). Vse ukaze iz prejšnjega poglavja lahko tako izvajate kar v RStudiu. Isti terminal bomo uporabljali na naslednji vaji za PLINK.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#sec-epg-repo",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#sec-epg-repo",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "Vaš repozitorij za vaje EPG",
+    "text": "Vaš repozitorij za vaje EPG\nDo konca semestra boste vse skripte, poročila in odgovore z vaj nalagali v en repozitorij. Ta bo hkrati vaša oddaja in vaša osebna zbirka kode, ki jo boste lahko uporabili tudi kasneje, npr. pri magistrski nalogi.\n\nUstvarite repozitorij\n\nNa GitHubu ustvarite nov repozitorij z imenom EPG-2026-priimek (npr. EPG-2026-novak).\nNastavitve:\n\nPrivate\nobkljukajte Add a README file\nAdd .gitignore → izberite predlogo R\n\nDodajte asistentko kot sodelavko (collaborator): Settings → Collaborators → Add people → UrskaGeric.\nRepozitorij odprite kot nov projekt v RStudiu (File → New Project → Version Control → Git).\n\n\n\nStruktura repozitorija\nUstvarite mape za vse vaje. Prazne mape Git ne spremlja, zato bodo na GitHubu vidne šele, ko vanje shranite prvo datoteko.\nEPG-2026-priimek/\n├── README.md              # kdo ste, kaj je v repozitoriju\n├── .gitignore             # datoteke, ki jih Git ne nalaga na GitHub\n├── EPG-2026-priimek.Rproj\n├── E1_git/\n├── E2_plink/\n├── E3_raznolikost/\n├── E4_struktura/\n├── E5_inbriding/\n└── data/                  # podatki (NE gredo na GitHub!)\n\n\n.gitignore: česa ne nalagamo na GitHub\nDatoteka .gitignore pove Gitu, katerih datotek naj ne spremlja. To je pri populacijski genomiki zelo pomembno:\n\nGitHub zavrne datoteke, večje od 100 MB. VCF datoteka z orli, s katero bomo delali, ima skoraj 600 MB.\nPodatki se med analizo ne spreminjajo in so že shranjeni drugje (npr. v repozitoriju Dryad ob članku). Na GitHub sodi koda, ki iz podatkov naredi rezultate.\nVmesne datoteke (PLINK .bed, .bim, .fam, .log …) lahko kadar koli ponovno izračunate s svojo skripto.\n\nNa konec datoteke .gitignore (predloga R že vsebuje .Rhistory, .RData in .Rproj.user/) dodajte:\n# --- podatki in vmesne datoteke (EPG) ---\ndata/\n*.vcf\n*.vcf.gz\n*.bed\n*.bim\n*.fam\n*.ped\n*.map\n*.raw\n*.log\n*.nosex\n*.exe\n\n# --- renderirani izhodi Quarto/Rmarkdown ---\n*_files/\n*.html\n\n\n\n\n\n\nOpombaKaj pa, če želim oddati HTML poročilo?\n\n\n\nČe želite poročilo oddati na GitHub, izbrišite vrstico *.html. Pri Quarto dokumentih je pri tem priporočljivo v glavo dodati embed-resources: true, da je vse (tudi slike) v eni HTML datoteki in mape *_files/ ne potrebujete.\n\n\n\n\n\n\n\n\nOpozoriloČe je velika datoteka že v commitu\n\n\n\nČe ste veliko datoteko pomotoma že dodali v commit, push ne bo uspel, tudi če jo kasneje dodate v .gitignore. V tem primeru prosite za pomoč. Rešitev je, da zadnji commit razveljavite (git reset --soft HEAD~1), datoteko odstranite iz pripravljalnega območja (git rm --cached datoteka) in commit ponovite.\n\n\n\n\nREADME.md\nREADME.md je napisan v Markdownu, ki ga že poznate iz vaje 0. GitHub ga prikaže na prvi strani repozitorija. Uredite ga, na primer:\n# Evolucijska in populacijska genetika 2026/27\n\nAvtor: Ime Priimek\n\nRepozitorij s skriptami in poročili z vaj pri predmetu EPG.\n\n## Vsebina\n\n| Mapa | Vaja |\n|---|---|\n| `E1_git/` | Nadzor različic z Gitom in GitHubom |\n| `E2_plink/` | SNP-ji in PLINK |\n| `E3_raznolikost/` | Genetska raznolikost in diferenciacija |\n| `E4_struktura/` | Populacijska struktura |\n| `E5_inbriding/` | Sorodnost, inbriding in ROH |\n\n## Podatki\n\nGenotipi orlov belorepcev: Hansen et al. (2023), *Molecular Ecology* 32: 1925–1942,\ndoi: [10.1111/mec.16858](https://doi.org/10.1111/mec.16858). Podatki niso del repozitorija.\n\n\nPravilo za vse naslednje vaje\n\n\n\n\n\n\nPomembnoPo vsaki vaji\n\n\n\n\npull na začetku dela,\nshranite skripte in poročila v mapo vaje,\ncommit z opisnim sporočilom (lahko večkrat med vajo),\npush na koncu dela.\n\nStanje vašega repozitorija na GitHubu je hkrati vaša oddaja.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#ko-gre-kaj-narobe-razveljavljanje-sprememb-undo",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#ko-gre-kaj-narobe-razveljavljanje-sprememb-undo",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "Ko gre kaj narobe: razveljavljanje sprememb (undo)",
+    "text": "Ko gre kaj narobe: razveljavljanje sprememb (undo)\n\n\n\n\n\n\n\nSituacija\nUkaz\n\n\n\n\nSpremenil/a sem datoteko in želim nazaj zadnjo shranjeno različico\ngit restore datoteka.R\n\n\nDatoteko sem dodal/a z git add, pa je ne želim v commitu\ngit restore --staged datoteka.R\n\n\nZadnji commit ima napačno sporočilo (še ni bil poslan s push)\ngit commit --amend -m \"Novo sporočilo\"\n\n\nŽelim razveljaviti commit, ki je že na GitHubu\ngit revert &lt;hash&gt; (ustvari nov commit, ki spremembe izniči)\n\n\n\n\n\n\n\n\n\nOpozorilo\n\n\n\ngit restore datoteka.R nepreklicno zavrže neshranjene spremembe v datoteki. Pred uporabo preverite z git diff.\n\n\n\nKonflikti\nKonflikt nastane, kadar je bila ista vrstica iste datoteke spremenjena na dveh mestih (npr. na GitHubu in na vašem računalniku). Ob pull vam Git v datoteko vpiše oznake:\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nplot(pca$x[, 1], pca$x[, 2], col = \"blue\")\n=======\nplot(pca$x[, 1], pca$x[, 2], col = \"red\")\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main\nZgornji del je vaša različica, spodnji različica z GitHuba. Ročno pustite pravo vrstico, izbrišite oznake &lt;&lt;&lt;&lt;&lt;&lt;&lt;, ======= in &gt;&gt;&gt;&gt;&gt;&gt;&gt;, nato pa git add, git commit in git push.\nPri delu v svojem repozitoriju z enega računalnika se konfliktom izognete, če dosledno uporabljate cikel pull → delo → commit → push.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#veje-branches",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#veje-branches",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "Veje (branches)",
+    "text": "Veje (branches)\nVeje omogočajo, da razvijate nove stvari ali preizkušate ideje, ne da bi pokvarili delujočo glavno različico (main). Pri vajah boste delali večinoma na main, veje pa so osnova vsakega skupinskega projekta.\n\nmain naj ostane čim bolj stabilna,\nvsaka oseba ali vsaka nova funkcija dobi svojo vejo,\nko je delo končano in preverjeno, vejo združimo (merge) nazaj v main.\n\n\n\n\nVeja test se odcepi od main, na njej naredimo dva commita, nato jo z git merge združimo nazaj v main.\n\n\n\nUstvarjanje in preklapljanje med vejami\ngit branch                 # seznam lokalnih vej (* = trenutna)\ngit switch -c nov-graf     # ustvari novo vejo in se premakni nanjo\ngit switch main            # vrni se na main\ngit branch -d nov-graf     # izbriši vejo (ko je že združena)\n\n\n\n\n\n\nOpombagit switch ali git checkout?\n\n\n\nV starejših navodilih in na slikah boste pogosto videli git checkout (git checkout -b nova-veja). Ukaz deluje, vendar opravlja dve različni nalogi: preklaplja med vejami in obnavlja datoteke, kar začetnike zmede. Novejša Git ukaza ju ločita: git switch za veje, git restore za datoteke. Na vajah uporabljamo switch.\n\n\n\n\nPrimer dela na veji\ngit switch -c nov-graf\n# ... urejate datoteke ...\ngit add .\ngit commit -m \"Dodaj PCA graf z barvami po državah\"\ngit push -u origin nov-graf\nOb prvem push nove veje vam GitHub izpiše povezavo za odprtje zahteve za združitev (Pull Request). To je predlog, da se veja združi v main, ki ga lahko pregledajo sodelavci.\n\n\nZdruževanje (merge): git merge\nPremaknite se na vejo, ki jo želite posodobiti (običajno main), in vanjo združite drugo vejo:\ngit switch main\ngit merge nov-graf\ngit push\nUpdating 0c879b4..a09a19b\nFast-forward\n E4_struktura/pca.R | 12 ++++++++++++\n 1 file changed, 12 insertions(+)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#grafična-orodja-neobvezno",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#grafična-orodja-neobvezno",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "Grafična orodja (neobvezno)",
+    "text": "Grafična orodja (neobvezno)\nGit Bash vas nauči, kako Git v resnici deluje. Ko ukaze razumete, so grafična orodja priročna:\n\nRStudio (zavihek Git): za delo na vajah,\nGitHub Desktop: preprost program za clone, commit, push in pull,\nVisual Studio Code (zavihek Source Control): če pišete tudi v Pythonu ali bashu,\nGitKraken: lep grafični prikaz vej in zgodovine.\n\n\n\n\n\n\n\nOpozoriloUrejanje neposredno na GitHubu\n\n\n\nNa GitHubu lahko datoteke urejate tudi v brskalniku. To je primerno za manjše popravke datoteke README, ne pa za kodo, saj je pred commitom ne morete pognati in preveriti.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#povzetek-ukazov-cheat-sheet",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#povzetek-ukazov-cheat-sheet",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "Povzetek ukazov (cheat sheet)",
+    "text": "Povzetek ukazov (cheat sheet)\ngit config --global user.name \"Ime Priimek\"   # enkratna nastavitev\ngit config --global user.email \"naslov\"\n\ngit clone &lt;url&gt;              # kopija repozitorija z GitHuba\ngit init                     # nov lokalni repozitorij\ngit status                   # kaj se je spremenilo\ngit add &lt;datoteka&gt;           # pripravi datoteko za commit\ngit add .                    # pripravi vse spremembe v mapi\ngit commit -m \"sporočilo\"    # shrani posnetek stanja\ngit push                     # pošlji commite na GitHub\ngit pull                     # prenesi in združi spremembe z GitHuba\ngit log --oneline            # zgodovina commitov\ngit diff                     # neshranjene spremembe\n\ngit restore &lt;datoteka&gt;       # zavrzi spremembe v datoteki\ngit restore --staged &lt;dat.&gt;  # odstrani datoteko iz pripravljalnega območja\n\ngit branch                   # seznam vej\ngit switch -c &lt;ime&gt;          # ustvari vejo in se premakni nanjo\ngit switch &lt;ime&gt;             # premakni se na obstoječo vejo\ngit merge &lt;ime&gt;              # združi vejo v trenutno vejo\ngit branch -d &lt;ime&gt;          # izbriši vejo\nUradni povzetek ukazov z GitHuba (dve strani, v angleščini) si natisnite ali shranite: Git cheat sheet (PDF).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#sec-naloga",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#sec-naloga",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "Naloga na vaji",
+    "text": "Naloga na vaji\n\nUstvarite GitHub račun, namestite Git in ga nastavite (user.name, user.email).\nUstvarite zasebni repozitorij EPG-2026-priimek z README in predlogo .gitignore za R ter dodajte UrskaGeric kot sodelavko.\nRepozitorij odprite kot projekt v RStudiu.\nUstvarite mape E1_git, E2_plink, E3_raznolikost, E4_struktura, E5_inbriding in data.\n.gitignore dopolnite s pravili iz Vaš repozitorij za vaje EPG.\nUredite README.md (ime, opis, tabela vaj).\nV mapo E1_git shranite datoteko ukazi.md s seznamom ukazov, ki ste jih danes uporabili, in vsakemu dodajte en stavek razlage v svojih besedah.\nadd → commit → push. Preverite, da je vse vidno na GitHubu.\nUstvarite vejo test, v njej spremenite ukazi.md, naredite commit, vejo združite v main in pošljite na GitHub.\nPovezavo do repozitorija oddajte v spletni učilnici.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#sec-domaca",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#sec-domaca",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "Domača naloga: priprava na vajo 2",
+    "text": "Domača naloga: priprava na vajo 2\nNa vseh naslednjih vajah bomo analizirali genomske podatke orla belorepca (Haliaeetus albicilla) iz članka:\n\nHansen, C. C. R., Láruson, Á. J., Rasmussen, J. A., et al. (2023). Genomic diversity and differentiation between island and mainland populations of white-tailed eagles (Haliaeetus albicilla). Molecular Ecology, 32, 1925–1942. https://doi.org/10.1111/mec.16858\n\nČlanek je prosto dostopen (open access): PDF članka. Preberite ga in v svojem repozitoriju ustvarite datoteko E1_git/clanek_orli.md, v kateri na kratko (v nekaj stavkih) odgovorite na vprašanja:\n\nKatero je glavno raziskovalno vprašanje članka? Zakaj je zanimivo, da je vrsta z veliko sposobnostjo razširjanja genetsko strukturirana?\nIz katerih držav so vzorci? Katere populacije so otoške in katere celinske?\nKaj so historični vzorci in zakaj so jih avtorji vključili poleg sodobnih?\nKakšen tip podatkov so uporabili (sekvenciranje, število SNP-jev) in kako so podatke filtrirali?\nNaštejte analize, ki so jih naredili (npr. genetska raznolikost, FST, PCA, ADMIXTURE, inbriding, efektivna velikost populacije). Katera slika ali tabela prikazuje rezultat posamezne analize?\nKakšne so glavne ugotovitve glede raznolikosti in inbridinga otoških populacij v primerjavi s celinskimi?\nKateri štirje zgodovinski dogodki naj bi oblikovali upad efektivne velikosti populacij?\nS svojimi besedami razložite pojme: učinek ustanovitelja, genetski drift, inbriding, filopatrija, efektivna velikost populacije (Ne).\n\nDatoteko oddajte s commit in push pred začetkom vaje 2. Na vajah 2–5 bomo nekatere od teh analiz ponovili sami in na koncu preverili, ali pridemo do enakih zaključkov kot avtorji.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  },
+  {
+    "objectID": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#za-radovedne-delo-v-skupini",
+    "href": "E1_nadzor_razlicic/E1_nadzor_razlicic.html#za-radovedne-delo-v-skupini",
+    "title": "Vaja 1: Nadzor različic z Gitom in GitHubom",
+    "section": "Za radovedne: delo v skupini",
+    "text": "Za radovedne: delo v skupini\nPri večjih projektih z več sodelavci se ekipa dogovori o pravilih za veje. Preprosta pravila, ki preprečijo veliko težav:\n\nne eksperimentirajte neposredno na main,\npred začetkom dela vedno pull,\nza vsako novo stvar ustvarite vejo z opisnim imenom (nov-graf, popravek-readme),\nvejo združite šele, ko koda deluje,\npišite smiselna sporočila commitov.\n\nEden bolj znanih dogovorov je Git flow:\n\n\n\nGit flow: main (stabilna različica), develop (razvoj), veje feature (nove funkcije), release (priprava nove različice) in hotfix (nujni popravki).\n\n\n\n\n\nVeja\nVloga\n\n\n\n\nmain\nstabilna, objavljena koda\n\n\ndevelop\nsproten razvoj, združevanje novih funkcij\n\n\nfeature/*\nnove funkcije (iz develop)\n\n\nrelease/*\npriprava nove različice (iz develop)\n\n\nhotfix/*\nnujni popravki (iz main)\n\n\n\n\nMerge ali rebase?\nOba ukaza združita delo z ene veje v drugo, vendar zgodovino obravnavata različno.\nMerge ohrani dejansko zgodovino in ustvari dodaten commit, ki veji združi:\nA---B---C---F    (main, F = merge commit)\n         \\ /\n          D---E  (veja)\nRebase vaše commite „presadi“ na konec druge veje, zato je zgodovina linearna. Pri tem se spremenijo oznake (hash) commitov:\nA---B---C---D'---E'\n\n\n\n\nMerge\nRebase\n\n\n\n\nZgodovina\nohrani veje\nlinearna, preglednejša\n\n\nVarnost na skupnih vejah\nvarnejši\nlahko zmede sodelavce\n\n\nKonflikti\nrešite enkrat\nlahko pri vsakem commitu posebej\n\n\n\nNa vajah uporabljamo merge. Rebase je koristen, ko osnove sodelovanja že dobro obvladate.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Vaja 1: Nadzor različic z Gitom in GitHubom</span>"
+    ]
+  }
+]

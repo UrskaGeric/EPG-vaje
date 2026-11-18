@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="sl" xml:lang="sl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.21">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Vaja 1: Nadzor različic z Gitom in GitHubom – Evolucijska in populacijska genetika</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea1d7ac60288e0f1efdbc993fd8432ae.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ef4d8e9faa04af36b84e1866e7343808.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Ni rezultatov",
+    "search-matching-documents-text": "ujemajoči se dokumenti",
+    "search-copy-link-title": "Kopiraj povezavo do iskanja",
+    "search-hide-matches-text": "Skrij dodatne zadetke",
+    "search-more-match-text": "več zadetkov v tem dokumentu",
+    "search-more-matches-text": "več zadetkov v tem dokumentu",
+    "search-clear-button-title": "Počisti",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Prekliči",
+    "search-submit-button-title": "Pošlji",
+    "search-label": "Iskanje"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Preklopi navigacijo v stranski vrstici" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../E1_nadzor_razlicic/E1_nadzor_razlicic.html"><span class="chapter-title">Vaja 1: Nadzor različic z Gitom in GitHubom</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Preklopi navigacijo v stranski vrstici" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Iskanje" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Evolucijska in populacijska genetika</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Iskanje"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Uvod</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../E1_nadzor_razlicic/E1_nadzor_razlicic.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Vaja 1: Nadzor različic z Gitom in GitHubom</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Na tej strani</h2>
+   
+  <ul>
+  <li><a href="#cilji-vaje" id="toc-cilji-vaje" class="nav-link active" data-scroll-target="#cilji-vaje">Cilji vaje</a></li>
+  <li><a href="#kaj-je-nadzor-različic" id="toc-kaj-je-nadzor-različic" class="nav-link" data-scroll-target="#kaj-je-nadzor-različic">Kaj je nadzor različic?</a>
+  <ul class="collapse">
+  <li><a href="#git-in-github" id="toc-git-in-github" class="nav-link" data-scroll-target="#git-in-github">Git in GitHub</a></li>
+  </ul></li>
+  <li><a href="#kako-deluje-git-kje-živi-vaša-koda" id="toc-kako-deluje-git-kje-živi-vaša-koda" class="nav-link" data-scroll-target="#kako-deluje-git-kje-živi-vaša-koda">Kako deluje Git: kje živi vaša koda</a></li>
+  <li><a href="#sec-namestitev" id="toc-sec-namestitev" class="nav-link" data-scroll-target="#sec-namestitev">Namestitev in nastavitev</a>
+  <ul class="collapse">
+  <li><a href="#sec-racun" id="toc-sec-racun" class="nav-link" data-scroll-target="#sec-racun">GitHub račun</a></li>
+  <li><a href="#namestitev-gita" id="toc-namestitev-gita" class="nav-link" data-scroll-target="#namestitev-gita">Namestitev Gita</a></li>
+  <li><a href="#prva-nastavitev-kdo-ste" id="toc-prva-nastavitev-kdo-ste" class="nav-link" data-scroll-target="#prva-nastavitev-kdo-ste">Prva nastavitev: kdo ste</a></li>
+  <li><a href="#prijava-v-github-iz-računalnika-authentication" id="toc-prijava-v-github-iz-računalnika-authentication" class="nav-link" data-scroll-target="#prijava-v-github-iz-računalnika-authentication">Prijava v GitHub iz računalnika (<em>authentication</em>)</a></li>
+  </ul></li>
+  <li><a href="#prvi-repozitorij-v-git-bashu" id="toc-prvi-repozitorij-v-git-bashu" class="nav-link" data-scroll-target="#prvi-repozitorij-v-git-bashu">Prvi repozitorij v Git Bashu</a>
+  <ul class="collapse">
+  <li><a href="#ustvarite-repozitorij-na-githubu" id="toc-ustvarite-repozitorij-na-githubu" class="nav-link" data-scroll-target="#ustvarite-repozitorij-na-githubu">Ustvarite repozitorij na GitHubu</a></li>
+  <li><a href="#git-clone-prenesite-repozitorij-na-računalnik" id="toc-git-clone-prenesite-repozitorij-na-računalnik" class="nav-link" data-scroll-target="#git-clone-prenesite-repozitorij-na-računalnik"><code>git clone</code>: prenesite repozitorij na računalnik</a></li>
+  <li><a href="#git-status-kaj-se-je-spremenilo" id="toc-git-status-kaj-se-je-spremenilo" class="nav-link" data-scroll-target="#git-status-kaj-se-je-spremenilo"><code>git status</code>: kaj se je spremenilo?</a></li>
+  <li><a href="#git-add-pripravite-spremembe-stage" id="toc-git-add-pripravite-spremembe-stage" class="nav-link" data-scroll-target="#git-add-pripravite-spremembe-stage"><code>git add</code>: pripravite spremembe (<em>stage</em>)</a></li>
+  <li><a href="#git-commit-shranite-posnetek-stanja-commit" id="toc-git-commit-shranite-posnetek-stanja-commit" class="nav-link" data-scroll-target="#git-commit-shranite-posnetek-stanja-commit"><code>git commit</code>: shranite posnetek stanja (<em>commit</em>)</a></li>
+  <li><a href="#git-push-pošljite-push-spremembe-na-github" id="toc-git-push-pošljite-push-spremembe-na-github" class="nav-link" data-scroll-target="#git-push-pošljite-push-spremembe-na-github"><code>git push</code>: pošljite (<em>push</em>) spremembe na GitHub</a></li>
+  <li><a href="#git-pull-prenesite-pull-spremembe-z-githuba" id="toc-git-pull-prenesite-pull-spremembe-z-githuba" class="nav-link" data-scroll-target="#git-pull-prenesite-pull-spremembe-z-githuba"><code>git pull</code>: prenesite (<em>pull</em>) spremembe z GitHuba</a></li>
+  <li><a href="#git-log-in-git-diff-zgodovina-log-in-razlike-diff" id="toc-git-log-in-git-diff-zgodovina-log-in-razlike-diff" class="nav-link" data-scroll-target="#git-log-in-git-diff-zgodovina-log-in-razlike-diff"><code>git log</code> in <code>git diff</code>: zgodovina (<em>log</em>) in razlike (<em>diff</em>)</a></li>
+  <li><a href="#git-init-nov-repozitorij-iz-obstoječe-mape" id="toc-git-init-nov-repozitorij-iz-obstoječe-mape" class="nav-link" data-scroll-target="#git-init-nov-repozitorij-iz-obstoječe-mape"><code>git init</code>: nov repozitorij iz obstoječe mape</a></li>
+  </ul></li>
+  <li><a href="#git-v-rstudiu" id="toc-git-v-rstudiu" class="nav-link" data-scroll-target="#git-v-rstudiu">Git v RStudiu</a>
+  <ul class="collapse">
+  <li><a href="#povežite-rstudio-z-gitom" id="toc-povežite-rstudio-z-gitom" class="nav-link" data-scroll-target="#povežite-rstudio-z-gitom">Povežite RStudio z Gitom</a></li>
+  <li><a href="#nov-rstudio-projekt-iz-github-repozitorija" id="toc-nov-rstudio-projekt-iz-github-repozitorija" class="nav-link" data-scroll-target="#nov-rstudio-projekt-iz-github-repozitorija">Nov RStudio projekt iz GitHub repozitorija</a></li>
+  <li><a href="#zavihek-git" id="toc-zavihek-git" class="nav-link" data-scroll-target="#zavihek-git">Zavihek Git</a></li>
+  </ul></li>
+  <li><a href="#sec-epg-repo" id="toc-sec-epg-repo" class="nav-link" data-scroll-target="#sec-epg-repo">Vaš repozitorij za vaje EPG</a>
+  <ul class="collapse">
+  <li><a href="#ustvarite-repozitorij" id="toc-ustvarite-repozitorij" class="nav-link" data-scroll-target="#ustvarite-repozitorij">Ustvarite repozitorij</a></li>
+  <li><a href="#struktura-repozitorija" id="toc-struktura-repozitorija" class="nav-link" data-scroll-target="#struktura-repozitorija">Struktura repozitorija</a></li>
+  <li><a href="#gitignore-česa-ne-nalagamo-na-github" id="toc-gitignore-česa-ne-nalagamo-na-github" class="nav-link" data-scroll-target="#gitignore-česa-ne-nalagamo-na-github"><code>.gitignore</code>: česa ne nalagamo na GitHub</a></li>
+  <li><a href="#readme.md" id="toc-readme.md" class="nav-link" data-scroll-target="#readme.md">README.md</a></li>
+  <li><a href="#pravilo-za-vse-naslednje-vaje" id="toc-pravilo-za-vse-naslednje-vaje" class="nav-link" data-scroll-target="#pravilo-za-vse-naslednje-vaje">Pravilo za vse naslednje vaje</a></li>
+  </ul></li>
+  <li><a href="#ko-gre-kaj-narobe-razveljavljanje-sprememb-undo" id="toc-ko-gre-kaj-narobe-razveljavljanje-sprememb-undo" class="nav-link" data-scroll-target="#ko-gre-kaj-narobe-razveljavljanje-sprememb-undo">Ko gre kaj narobe: razveljavljanje sprememb (<em>undo</em>)</a>
+  <ul class="collapse">
+  <li><a href="#konflikti" id="toc-konflikti" class="nav-link" data-scroll-target="#konflikti">Konflikti</a></li>
+  </ul></li>
+  <li><a href="#veje-branches" id="toc-veje-branches" class="nav-link" data-scroll-target="#veje-branches">Veje (branches)</a>
+  <ul class="collapse">
+  <li><a href="#ustvarjanje-in-preklapljanje-med-vejami" id="toc-ustvarjanje-in-preklapljanje-med-vejami" class="nav-link" data-scroll-target="#ustvarjanje-in-preklapljanje-med-vejami">Ustvarjanje in preklapljanje med vejami</a></li>
+  <li><a href="#primer-dela-na-veji" id="toc-primer-dela-na-veji" class="nav-link" data-scroll-target="#primer-dela-na-veji">Primer dela na veji</a></li>
+  <li><a href="#združevanje-merge-git-merge" id="toc-združevanje-merge-git-merge" class="nav-link" data-scroll-target="#združevanje-merge-git-merge">Združevanje (<em>merge</em>): <code>git merge</code></a></li>
+  </ul></li>
+  <li><a href="#grafična-orodja-neobvezno" id="toc-grafična-orodja-neobvezno" class="nav-link" data-scroll-target="#grafična-orodja-neobvezno">Grafična orodja (neobvezno)</a></li>
+  <li><a href="#povzetek-ukazov-cheat-sheet" id="toc-povzetek-ukazov-cheat-sheet" class="nav-link" data-scroll-target="#povzetek-ukazov-cheat-sheet">Povzetek ukazov (<em>cheat sheet</em>)</a></li>
+  <li><a href="#sec-naloga" id="toc-sec-naloga" class="nav-link" data-scroll-target="#sec-naloga">Naloga na vaji</a></li>
+  <li><a href="#sec-domaca" id="toc-sec-domaca" class="nav-link" data-scroll-target="#sec-domaca">Domača naloga: priprava na vajo 2</a></li>
+  <li><a href="#za-radovedne-delo-v-skupini" id="toc-za-radovedne-delo-v-skupini" class="nav-link" data-scroll-target="#za-radovedne-delo-v-skupini">Za radovedne: delo v skupini</a>
+  <ul class="collapse">
+  <li><a href="#merge-ali-rebase" id="toc-merge-ali-rebase" class="nav-link" data-scroll-target="#merge-ali-rebase">Merge ali rebase?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-E1_nadzor_razlicic" class="quarto-section-identifier"><span class="chapter-title">Vaja 1: Nadzor različic z Gitom in GitHubom</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="cilji-vaje" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="cilji-vaje">Cilji vaje</h2>
+<p>Po tej vaji boste znali:</p>
+<ul>
+<li>razložiti, kaj je nadzor različic (<em>version control</em>) in zakaj je pomemben za ponovljivo znanost (<em>reproducible science</em>),</li>
+<li>ločiti med <strong>Gitom</strong> (orodje na vašem računalniku) in <strong>GitHubom</strong> (spletna storitev),</li>
+<li>namestiti in nastaviti Git ter ga povezati z GitHub računom,</li>
+<li>ustvariti repozitorij (<em>repository</em>), ga klonirati (<em>clone</em>) na računalnik ter uporabljati osnovne ukaze <code>status</code>, <code>add</code>, <code>commit</code>, <code>push</code> in <code>pull</code>,</li>
+<li>uporabljati Git neposredno iz <strong>RStudia</strong>,</li>
+<li>pripraviti <strong>svoj repozitorij za vaje EPG</strong>, kamor boste do konca semestra nalagali skripte iz vseh vaj.</li>
+</ul>
+</section>
+<section id="kaj-je-nadzor-različic" class="level2">
+<h2 class="anchored" data-anchor-id="kaj-je-nadzor-različic">Kaj je nadzor različic?</h2>
+<p>Verjetno poznate mapo, v kateri so datoteke <code>analiza.R</code>, <code>analiza_v2.R</code>, <code>analiza_v2_popravljeno.R</code> in <code>analiza_KONCNO_res.R</code>. Čez en mesec ne veste več, katera je prava in kaj ste v kateri spremenili. <strong>Nadzor različic</strong> (<em>version control</em>) to težavo reši sistematično: vsako pomembno spremembo shrani kot posnetek stanja projekta (<em>snapshot</em>), skupaj s časom, avtorjem in kratkim opisom.</p>
+<p>Za raziskovalno delo je to pomembno, ker:</p>
+<ul>
+<li><strong>ponovljivost</strong>: vedno lahko pokažete, s katero različico skripte ste dobili rezultat v članku,</li>
+<li><strong>varnost</strong>: če nekaj pokvarite ali izbrišete, se vrnete na prejšnje delujoče stanje,</li>
+<li><strong>sodelovanje</strong>: več ljudi lahko dela na istem projektu, ne da bi si prepisovali datoteke,</li>
+<li><strong>varnostna kopija</strong>: kopija projekta je shranjena tudi na spletu, ne le na vašem prenosniku.</li>
+</ul>
+<p>Večina orodij, ki jih bomo uporabljali v bioinformatiki (PLINK, R paketi, analizne verige, kot je Snakemake), je razvitih in objavljenih na GitHubu. Ob objavi članka revije vedno pogosteje zahtevajo, da je koda javno dostopna, najpogosteje prav v GitHub repozitoriju.</p>
+<section id="git-in-github" class="level3">
+<h3 class="anchored" data-anchor-id="git-in-github">Git in GitHub</h3>
+<p><strong>Git</strong> je program za nadzor različic, ki ga namestite na svoj računalnik. Spremembe beleži lokalno in deluje tudi brez interneta. <strong>GitHub</strong> je spletna storitev, ki gosti kopije Git repozitorijev. Omogoča deljenje, sodelovanje in varnostno kopijo.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Git</strong></th>
+<th><strong>GitHub</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Kaj je</td>
+<td>program (orodje)</td>
+<td>spletna storitev</td>
+</tr>
+<tr class="even">
+<td>Kje teče</td>
+<td>lokalno (<em>local</em>), na vašem računalniku</td>
+<td>na spletu (github.com)</td>
+</tr>
+<tr class="odd">
+<td>Kako ga uporabljamo</td>
+<td>ukazna vrstica (<em>command line</em>), RStudio, VS Code</td>
+<td>spletni brskalnik, GitHub Desktop</td>
+</tr>
+<tr class="even">
+<td>Namen</td>
+<td>beleženje različic datotek v repozitoriju</td>
+<td>hramba in deljenje kopije repozitorija, sodelovanje</td>
+</tr>
+<tr class="odd">
+<td>Alternativa</td>
+<td>– (de facto standard)</td>
+<td>GitLab, Bitbucket</td>
+</tr>
+</tbody>
+</table>
+<p>Git in GitHub se pogovarjata predvsem z dvema ukazoma: s <strong>push</strong> pošljete svoje spremembe na GitHub, s <strong>pull</strong> pa spremembe z GitHuba prenesete k sebi.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/git_github_push_pull.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Git in GitHub: s push pošljemo spremembe na GitHub, s pull jih prenesemo nazaj na računalnik."><img src="images/git_github_push_pull.png" class="img-fluid figure-img" style="width:60.0%" alt="Git in GitHub: s push pošljemo spremembe na GitHub, s pull jih prenesemo nazaj na računalnik."></a></p>
+<figcaption>Git in GitHub: s <em>push</em> pošljemo spremembe na GitHub, s <em>pull</em> jih prenesemo nazaj na računalnik.</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nasvet</span>Ključna ideja
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Git shranjuje <strong>posnetke stanja</strong> projekta (angl. <em>commits</em>) na vašem računalniku. GitHub hrani skupno kopijo te zgodovine na spletu, da se lahko z njo sinhronizirate (<em>sync</em>) vi (z več računalnikov) in vaši sodelavci (<em>collaborators</em>).</p>
+</div>
+</div>
+<p>Git je <strong>porazdeljen</strong> sistem za nadzor različic (<em>distributed version control system</em>): vsak uporabnik ima na svojem računalniku celoten repozitorij z vso zgodovino (<em>history</em>) in delovno kopijo datotek (<em>working copy</em>). Strežnik (<em>server</em>) (npr. GitHub) je le skupna točka, prek katere se uporabniki sinhronizirajo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/nove_sheme/porazdeljen_sistem.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Porazdeljen sistem za nadzor različic. Vsak računalnik ima svoj lokalni repozitorij in delovno mapo ter se z GitHubom sinhronizira s push in pull."><img src="images/nove_sheme/porazdeljen_sistem.svg" class="img-fluid figure-img" style="width:90.0%" alt="Porazdeljen sistem za nadzor različic. Vsak računalnik ima svoj lokalni repozitorij in delovno mapo ter se z GitHubom sinhronizira s push in pull."></a></p>
+<figcaption>Porazdeljen sistem za nadzor različic. Vsak računalnik ima svoj lokalni repozitorij in delovno mapo ter se z GitHubom sinhronizira s <em>push</em> in <em>pull</em>.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="kako-deluje-git-kje-živi-vaša-koda" class="level2">
+<h2 class="anchored" data-anchor-id="kako-deluje-git-kje-živi-vaša-koda">Kako deluje Git: kje živi vaša koda</h2>
+<p>Pri delu z Gitom se datoteke premikajo med štirimi „prostori“:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Del</th>
+<th>Kje</th>
+<th>Kaj je</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Delovna mapa</strong> (<em>working directory</em>)</td>
+<td>vaš računalnik</td>
+<td>mapa z datotekami, ki jih urejate (v RStudiu, VS Code, Excelu …)</td>
+</tr>
+<tr class="even">
+<td><strong>Pripravljalno območje</strong> (<em>staging area</em>, <em>index</em>)</td>
+<td>vaš računalnik</td>
+<td>„čakalnica“ za spremembe, ki ste jih izbrali z <code>git add</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Lokalni repozitorij</strong> (<em>local repository</em>)</td>
+<td>vaš računalnik (skrita mapa <code>.git</code>)</td>
+<td>zgodovina vseh posnetkov (commitov) na vašem računalniku</td>
+</tr>
+<tr class="even">
+<td><strong>Oddaljeni repozitorij</strong> (<em>remote repository</em>)</td>
+<td>npr. GitHub</td>
+<td>skupna kopija projekta na spletu</td>
+</tr>
+</tbody>
+</table>
+<p>Spremembe ostanejo <strong>lokalne</strong>, dokler jih ne pošljete na GitHub s <code>push</code>. Spremembe drugih (ali svoje z drugega računalnika) prenesete s <code>pull</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/git_workflow.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Potek dela z Gitom: delovna mapa → pripravljalno območje (add) → lokalni repozitorij (commit) → oddaljeni repozitorij (push). Vir: CloudStudio.com.au."><img src="images/git_workflow.png" class="img-fluid figure-img" style="width:75.0%" alt="Potek dela z Gitom: delovna mapa → pripravljalno območje (add) → lokalni repozitorij (commit) → oddaljeni repozitorij (push). Vir: CloudStudio.com.au."></a></p>
+<figcaption>Potek dela z Gitom: delovna mapa → pripravljalno območje (<em>add</em>) → lokalni repozitorij (<em>commit</em>) → oddaljeni repozitorij (<em>push</em>). Vir: CloudStudio.com.au.</figcaption>
+</figure>
+</div>
+<p>Ukaz <code>pull</code> je v resnici kombinacija dveh ukazov: <code>fetch</code> (prenesi spremembe z GitHuba v lokalni repozitorij) in <code>merge</code> (združi jih z vašimi datotekami v delovni mapi).</p>
+<p>Spodnja slika povzema ukaze, ki premikajo spremembe med temi prostori. Večino jih bomo spoznali na vaji.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/nove_sheme/git_prostori_ukazi.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Pregled ukazov med delovno mapo, pripravljalnim območjem, lokalnim in oddaljenim repozitorijem. Sivi pravokotniki označujejo, kaj primerja ukaz git diff."><img src="images/nove_sheme/git_prostori_ukazi.svg" class="img-fluid figure-img" style="width:95.0%" alt="Pregled ukazov med delovno mapo, pripravljalnim območjem, lokalnim in oddaljenim repozitorijem. Sivi pravokotniki označujejo, kaj primerja ukaz git diff."></a></p>
+<figcaption>Pregled ukazov med delovno mapo, pripravljalnim območjem, lokalnim in oddaljenim repozitorijem. Sivi pravokotniki označujejo, kaj primerja ukaz <code>git diff</code>.</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Opomba</span>Vsakodnevni cikel
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="images/nove_sheme/vsakodnevni_cikel.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/nove_sheme/vsakodnevni_cikel.svg" class="img-fluid" style="width:100.0%"></a></p>
+</div>
+</div>
+</section>
+<section id="sec-namestitev" class="level2">
+<h2 class="anchored" data-anchor-id="sec-namestitev">Namestitev in nastavitev</h2>
+<section id="sec-racun" class="level3">
+<h3 class="anchored" data-anchor-id="sec-racun">GitHub račun</h3>
+<ol type="1">
+<li>Pojdite na <a href="https://github.com/" class="uri">https://github.com/</a> in izberite <strong>Sign up</strong>.</li>
+<li>Uporabniško ime izberite premišljeno, saj bo vidno v povezavah do vaših repozitorijev (npr. <code>https://github.com/ime-priimek</code>). Priporočamo ime, ki ga boste lahko uporabljali tudi kasneje v raziskovalnem delu.</li>
+<li>Kot študenti lahko zaprosite za brezplačen <a href="https://education.github.com/">GitHub Education</a> paket (Student Developer Pack). Za vaje ga ne potrebujete, je pa uporaben.</li>
+</ol>
+</section>
+<section id="namestitev-gita" class="level3">
+<h3 class="anchored" data-anchor-id="namestitev-gita">Namestitev Gita</h3>
+<p><strong>Windows:</strong> prenesite Git z <a href="https://git-scm.com/download/win" class="uri">https://git-scm.com/download/win</a> in ga namestite s privzetimi nastavitvami. Skupaj z Gitom se namesti tudi <strong>Git Bash</strong>, ukazna vrstica, v kateri bomo izvajali ukaze, in <strong>Git Credential Manager</strong>, ki poskrbi za prijavo v GitHub.</p>
+<p><strong>macOS:</strong> odprite aplikacijo <em>Terminal</em> in vpišite <code>git --version</code>. Če Git še ni nameščen, vas bo sistem vprašal, ali želite namestiti <em>Command Line Developer Tools</em>. Potrdite.</p>
+<p><strong>Linux:</strong> <code>sudo apt install git</code> (Ubuntu/Debian).</p>
+<p>Preverite, ali namestitev deluje. Odprite Git Bash (Windows) ali Terminal (macOS/Linux) in vpišite:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>git version 2.46.0.windows.1</code></pre>
+</section>
+<section id="prva-nastavitev-kdo-ste" class="level3">
+<h3 class="anchored" data-anchor-id="prva-nastavitev-kdo-ste">Prva nastavitev: kdo ste</h3>
+<p>Git vsak commit podpiše z imenom in e-naslovom. To nastavite <strong>enkrat</strong> na vsakem računalniku. Uporabite <strong>isti e-naslov kot pri GitHub računu</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Ime Priimek"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"vas.naslov@primer.si"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> init.defaultBranch main</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Zadnja vrstica poskrbi, da se glavna veja v novih repozitorijih imenuje <code>main</code> (enako kot na GitHubu).</p>
+<p>Nastavitve preverite z:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--list</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nasvet</span>Nastavitev iz R
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Isto lahko naredite tudi v R konzoli s paketom <code>usethis</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"usethis"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">"Ime Priimek"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">user.email =</span> <span class="st">"vas.naslov@primer.si"</span>)</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="prijava-v-github-iz-računalnika-authentication" class="level3">
+<h3 class="anchored" data-anchor-id="prijava-v-github-iz-računalnika-authentication">Prijava v GitHub iz računalnika (<em>authentication</em>)</h3>
+<p>GitHub za <code>push</code> ne sprejme več gesla vašega računa. Potrebuje varno prijavo:</p>
+<ul>
+<li><strong>Windows:</strong> ob prvem <code>git clone</code> (zasebnega repozitorija) ali <code>git push</code> se odpre okno <strong>Git Credential Manager</strong>. Izberite <em>Sign in with your browser</em> in potrdite dostop v brskalniku. Prijava se shrani, zato tega ne boste več ponavljali.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/notion_original/06_avtorizacija.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Ob prvi povezavi Git Bash z GitHubom potrdite dostop za Git Credential Manager (Authorize git-ecosystem)."><img src="images/notion_original/06_avtorizacija.png" class="img-fluid figure-img" style="width:55.0%" alt="Ob prvi povezavi Git Bash z GitHubom potrdite dostop za Git Credential Manager (Authorize git-ecosystem)."></a></p>
+<figcaption>Ob prvi povezavi Git Bash z GitHubom potrdite dostop za Git Credential Manager (<em>Authorize git-ecosystem</em>).</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>macOS/Linux ali če zgornje ne deluje:</strong> ustvarite <strong>osebni dostopni žeton</strong> (<em>Personal Access Token</em>, PAT) in ga shranite. Najlažje to naredite iz R:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"usethis"</span>, <span class="st">"gitcreds"</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()   <span class="co"># odpre GitHub v brskalniku; ustvarite žeton in ga kopirajte</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()         <span class="co"># prilepite žeton, ko vas vpraša</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Opozorilo</span>Žeton je kot geslo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Žetona nikoli ne zapisujte v skripte in ga ne nalagajte na GitHub.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="prvi-repozitorij-v-git-bashu" class="level2">
+<h2 class="anchored" data-anchor-id="prvi-repozitorij-v-git-bashu">Prvi repozitorij v Git Bashu</h2>
+<p>Najprej se naučimo ukaze v ukazni vrstici. Tako boste razumeli, kaj se dogaja v ozadju, ko boste kasneje klikali gumbe v RStudiu.</p>
+<section id="ustvarite-repozitorij-na-githubu" class="level3">
+<h3 class="anchored" data-anchor-id="ustvarite-repozitorij-na-githubu">Ustvarite repozitorij na GitHubu</h3>
+<ol type="1">
+<li>Na GitHubu kliknite <strong>+</strong> (desno zgoraj) → <strong>New repository</strong>.</li>
+<li>Izpolnite:
+<ul>
+<li><strong>Repository name</strong>: npr. <code>git-vaja</code></li>
+<li><strong>Visibility</strong>: <em>Private</em> ali <em>Public</em></li>
+<li>obkljukajte <strong>Add a README file</strong>. README je „domača stran“ repozitorija s kratkim opisom projekta.</li>
+</ul></li>
+<li>Kliknite <strong>Create repository</strong>.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/notion_original/03_github_obrazec.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Obrazec za nov repozitorij: ime, zasebnost (Private) in README."><img src="images/notion_original/03_github_obrazec.png" class="img-fluid figure-img" style="width:75.0%" alt="Obrazec za nov repozitorij: ime, zasebnost (Private) in README."></a></p>
+<figcaption>Obrazec za nov repozitorij: ime, zasebnost (<em>Private</em>) in README.</figcaption>
+</figure>
+</div>
+</section>
+<section id="git-clone-prenesite-repozitorij-na-računalnik" class="level3">
+<h3 class="anchored" data-anchor-id="git-clone-prenesite-repozitorij-na-računalnik"><code>git clone</code>: prenesite repozitorij na računalnik</h3>
+<p>Na strani repozitorija kliknite zeleni gumb <strong>Code</strong> in kopirajte <strong>HTTPS</strong> naslov. Na voljo so še druge možnosti:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Možnost</th>
+<th>Kdaj jo uporabimo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>HTTPS</strong></td>
+<td>kloniranje z ukazom <code>git clone</code> (Git Bash, RStudio)</td>
+</tr>
+<tr class="even">
+<td><strong>Open with GitHub Desktop</strong></td>
+<td>če raje uporabljate grafični program</td>
+</tr>
+<tr class="odd">
+<td><strong>Download ZIP</strong></td>
+<td>enkraten prenos <strong>brez</strong> zgodovine Gita. Pri vajah tega ne uporabljajte.</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/notion_original/05_github_code_gumb.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Gumb Code na strani repozitorija. HTTPS naslov kopirate z ikono desno od povezave."><img src="images/notion_original/05_github_code_gumb.png" class="img-fluid figure-img" style="width:55.0%" alt="Gumb Code na strani repozitorija. HTTPS naslov kopirate z ikono desno od povezave."></a></p>
+<figcaption>Gumb <strong>Code</strong> na strani repozitorija. HTTPS naslov kopirate z ikono desno od povezave.</figcaption>
+</figure>
+</div>
+<p>V Git Bashu se premaknite v mapo, kjer želite imeti svoje projekte, in klonirajte repozitorij:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/Documents/GitHub</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Documents/GitHub</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/UPORABNISKO-IME/git-vaja.git</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>Cloning into 'git-vaja'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.</code></pre>
+<p>Premaknite se v novo mapo repozitorija:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> git-vaja</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Git Bash v vrstici z ukazom pokaže nekaj koristnih informacij: zeleno uporabniško ime in računalnik, rumeno trenutno mapo in, kadar ste v Git repozitoriju, modro trenutno <strong>vejo</strong> (<em>branch</em>, npr. <code>(main)</code>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/notion_original/07_gitbash_barve.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Vrstica z ukazom v Git Bashu: uporabnik in računalnik (zeleno), MINGW64 (vijolično), mapa (rumeno) in veja (modro)."><img src="images/notion_original/07_gitbash_barve.png" class="img-fluid figure-img" style="width:100.0%" alt="Vrstica z ukazom v Git Bashu: uporabnik in računalnik (zeleno), MINGW64 (vijolično), mapa (rumeno) in veja (modro)."></a></p>
+<figcaption>Vrstica z ukazom v Git Bashu: uporabnik in računalnik (zeleno), MINGW64 (vijolično), mapa (rumeno) in veja (modro).</figcaption>
+</figure>
+</div>
+</section>
+<section id="git-status-kaj-se-je-spremenilo" class="level3">
+<h3 class="anchored" data-anchor-id="git-status-kaj-se-je-spremenilo"><code>git status</code>: kaj se je spremenilo?</h3>
+<p><code>git status</code> je ukaz, ki ga boste uporabljali najpogosteje. Pokaže stanje delovne mape glede na zadnji commit.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean</code></pre>
+<p>V mapo dodajte novo datoteko, npr. <code>scripts/test.R</code> (ustvarite mapo <code>scripts</code> in v njej prazno datoteko). Ponovno poženite <code>git status</code>:</p>
+<pre class="text"><code>On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+        scripts/
+
+nothing added to commit but untracked files present (use "git add" to track)</code></pre>
+<p>Nove datoteke, ki jih Git še ne spremlja (<em>untracked</em>), so izpisane rdeče.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/notion_original/08_status_untracked.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Datoteke, ki jih Git še ne spremlja, so izpisane rdeče."><img src="images/notion_original/08_status_untracked.png" class="img-fluid figure-img" style="width:100.0%" alt="Datoteke, ki jih Git še ne spremlja, so izpisane rdeče."></a></p>
+<figcaption>Datoteke, ki jih Git še ne spremlja, so izpisane rdeče.</figcaption>
+</figure>
+</div>
+</section>
+<section id="git-add-pripravite-spremembe-stage" class="level3">
+<h3 class="anchored" data-anchor-id="git-add-pripravite-spremembe-stage"><code>git add</code>: pripravite spremembe (<em>stage</em>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add scripts/test.R   <span class="co"># ena datoteka</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .                <span class="co"># vse spremembe v trenutni mapi (previdno!)</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ponovno preverite z <code>git status</code>. Datoteke, pripravljene za commit, so izpisane zeleno:</p>
+<pre class="text"><code>Changes to be committed:
+  (use "git restore --staged &lt;file&gt;..." to unstage)
+        new file:   scripts/test.R</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/notion_original/09_status_staged.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Po git add je datoteka izpisana zeleno in pripravljena za commit."><img src="images/notion_original/09_status_staged.png" class="img-fluid figure-img" style="width:100.0%" alt="Po git add je datoteka izpisana zeleno in pripravljena za commit."></a></p>
+<figcaption>Po <code>git add</code> je datoteka izpisana zeleno in pripravljena za commit.</figcaption>
+</figure>
+</div>
+</section>
+<section id="git-commit-shranite-posnetek-stanja-commit" class="level3">
+<h3 class="anchored" data-anchor-id="git-commit-shranite-posnetek-stanja-commit"><code>git commit</code>: shranite posnetek stanja (<em>commit</em>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Dodaj testno skripto"</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>[main 0c879b4] Dodaj testno skripto
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 scripts/test.R</code></pre>
+<p>Vsak commit dobi enolično oznako (<em>hash</em>, tukaj <code>0c879b4</code>), po kateri se lahko kasneje vrnete nanj.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nasvet</span>Dobro sporočilo commita
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sporočilo naj na kratko pove, <strong>kaj</strong> ste spremenili, npr. <code>Dodaj filtriranje SNP-jev po MAF</code> ali <code>Popravi os y na PCA grafu</code>. Izogibajte se sporočilom, kot so <code>popravki</code>, <code>asdf</code> ali <code>nova verzija</code>. Čez en mesec iz njih ne boste vedeli ničesar.</p>
+</div>
+</div>
+<section id="bližnjica-git-commit--a" class="level4">
+<h4 class="anchored" data-anchor-id="bližnjica-git-commit--a">Bližnjica: <code>git commit -a</code></h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-a</span> <span class="at">-m</span> <span class="st">"Posodobi obstoječe skripte"</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ukaz v enem koraku pripravi in shrani <strong>spremembe že spremljanih datotek</strong>. <strong>Novih</strong> datotek (<em>untracked</em>) ne doda. Dokler se ne navadite, raje uporabljajte ločena koraka <code>git add</code> in <code>git commit</code>.</p>
+</section>
+</section>
+<section id="git-push-pošljite-push-spremembe-na-github" class="level3">
+<h3 class="anchored" data-anchor-id="git-push-pošljite-push-spremembe-na-github"><code>git push</code>: pošljite (<em>push</em>) spremembe na GitHub</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>To https://github.com/UPORABNISKO-IME/git-vaja.git
+   c82b3ae..0c879b4  main -&gt; main</code></pre>
+<p>Osvežite stran repozitorija na GitHubu. Nova datoteka in commit sta zdaj vidna tudi tam.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/notion_original/10_github_po_push.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Repozitorij na GitHubu po push: nova mapa in sporočilo commita."><img src="images/notion_original/10_github_po_push.png" class="img-fluid figure-img" style="width:100.0%" alt="Repozitorij na GitHubu po push: nova mapa in sporočilo commita."></a></p>
+<figcaption>Repozitorij na GitHubu po <code>push</code>: nova mapa in sporočilo commita.</figcaption>
+</figure>
+</div>
+</section>
+<section id="git-pull-prenesite-pull-spremembe-z-githuba" class="level3">
+<h3 class="anchored" data-anchor-id="git-pull-prenesite-pull-spremembe-z-githuba"><code>git pull</code>: prenesite (<em>pull</em>) spremembe z GitHuba</h3>
+<p>Na GitHubu v brskalniku uredite datoteko <code>README.md</code> (ikona svinčnika → <em>Commit changes</em>). S tem simulirate spremembo, ki jo je naredil nekdo drug ali vi na drugem računalniku. Nato na računalniku:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>Updating 0c879b4..5e1a2f3
+Fast-forward
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)</code></pre>
+<p>Če na GitHubu ni nič novega, Git izpiše <code>Already up to date.</code></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Opozorilo</span>Dobra navada
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Na začetku vsakega dela najprej poženite <code>git pull</code>, šele nato začnite urejati datoteke. Tako se izognete konfliktom (<em>merge conflicts</em>).</p>
+</div>
+</div>
+</section>
+<section id="git-log-in-git-diff-zgodovina-log-in-razlike-diff" class="level3">
+<h3 class="anchored" data-anchor-id="git-log-in-git-diff-zgodovina-log-in-razlike-diff"><code>git log</code> in <code>git diff</code>: zgodovina (<em>log</em>) in razlike (<em>diff</em>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span>     <span class="co"># kratek seznam vseh commitov</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff              <span class="co"># kaj ste spremenili, a še niste dodali z git add</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span>     <span class="co"># kaj je pripravljeno za naslednji commit</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>5e1a2f3 (HEAD -&gt; main, origin/main) Update README.md
+0c879b4 Dodaj testno skripto
+c82b3ae Initial commit</code></pre>
+</section>
+<section id="git-init-nov-repozitorij-iz-obstoječe-mape" class="level3">
+<h3 class="anchored" data-anchor-id="git-init-nov-repozitorij-iz-obstoječe-mape"><code>git init</code>: nov repozitorij iz obstoječe mape</h3>
+<p>Če imate projekt že na računalniku in ga želite šele zdaj dati pod nadzor različic:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pot/do/projekta</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>Initialized empty Git repository in .../projekt/.git/</code></pre>
+<p>Git ustvari skrito mapo <code>.git</code>, v kateri hrani vso zgodovino (<code>HEAD</code>, <code>objects</code>, <code>refs</code> …). Te mape ne urejajte ročno in je ne brišite, saj s tem izbrišete celotno zgodovino.</p>
+<p>Da lokalni repozitorij povežete z GitHubom, na GitHubu ustvarite <strong>prazen</strong> repozitorij (brez README) in nato:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/UPORABNISKO-IME/projekt.git</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Opomba</span><code>clone</code> ali <code>init</code>?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong><code>git clone</code></strong>: kopija obstoječega repozitorija z GitHuba. To je najpogostejši način in ga bomo uporabljali na vajah.</li>
+<li><strong><code>git init</code></strong>: nov lokalni repozitorij, ki ga kasneje povežete z GitHubom.</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="git-v-rstudiu" class="level2">
+<h2 class="anchored" data-anchor-id="git-v-rstudiu">Git v RStudiu</h2>
+<p>Na vajah bomo delali v RStudiu, ki ima vgrajen zavihek <strong>Git</strong>. Ukazi so enaki kot v Git Bashu, le da jih izvajate s klikom.</p>
+<section id="povežite-rstudio-z-gitom" class="level3">
+<h3 class="anchored" data-anchor-id="povežite-rstudio-z-gitom">Povežite RStudio z Gitom</h3>
+<ol type="1">
+<li><strong>Tools → Global Options → Git/SVN</strong>.</li>
+<li>Obkljukajte <em>Enable version control interface for RStudio projects</em>.</li>
+<li>V polju <em>Git executable</em> mora biti pot do Gita, na Windows običajno <code>C:/Program Files/Git/bin/git.exe</code>. Če je polje prazno, poiščite datoteko s <em>Browse</em>.</li>
+<li>Ponovno zaženite RStudio.</li>
+</ol>
+</section>
+<section id="nov-rstudio-projekt-iz-github-repozitorija" class="level3">
+<h3 class="anchored" data-anchor-id="nov-rstudio-projekt-iz-github-repozitorija">Nov RStudio projekt iz GitHub repozitorija</h3>
+<ol type="1">
+<li><strong>File → New Project → Version Control → Git</strong>.</li>
+<li>V <em>Repository URL</em> prilepite HTTPS naslov repozitorija z GitHuba.</li>
+<li>Izberite mapo (<em>Create project as subdirectory of</em>), npr. <code>Documents/GitHub</code>.</li>
+<li>Kliknite <strong>Create Project</strong>.</li>
+</ol>
+<p>RStudio repozitorij klonira, ustvari v njem RStudio projekt (<code>.Rproj</code>) in ga odpre. Desno zgoraj se pojavi zavihek <strong>Git</strong>.</p>
+</section>
+<section id="zavihek-git" class="level3">
+<h3 class="anchored" data-anchor-id="zavihek-git">Zavihek Git</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Gumb / stolpec</th>
+<th>Ukaz v Gitu</th>
+<th>Kaj naredi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>kljukica <em>Staged</em></td>
+<td><code>git add</code></td>
+<td>pripravi datoteko za commit</td>
+</tr>
+<tr class="even">
+<td><strong>Diff</strong></td>
+<td><code>git diff</code></td>
+<td>pokaže spremembe po vrsticah (zeleno dodano, rdeče izbrisano)</td>
+</tr>
+<tr class="odd">
+<td><strong>Commit</strong></td>
+<td><code>git commit</code></td>
+<td>odpre okno, kjer napišete sporočilo in shranite posnetek</td>
+</tr>
+<tr class="even">
+<td><strong>Push</strong> (zelena puščica gor)</td>
+<td><code>git push</code></td>
+<td>pošlje commite na GitHub</td>
+</tr>
+<tr class="odd">
+<td><strong>Pull</strong> (modra puščica dol)</td>
+<td><code>git pull</code></td>
+<td>prenese spremembe z GitHuba</td>
+</tr>
+<tr class="even">
+<td>ura (<strong>History</strong>)</td>
+<td><code>git log</code></td>
+<td>pokaže zgodovino commitov</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/notion_original/14_rstudio_git.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="RStudio z odprtim repozitorijem: zavihek Git (desno zgoraj) z gumbi Diff, Commit, Pull, Push in History ter zavihek Terminal z Git Bashem (levo spodaj)."><img src="images/notion_original/14_rstudio_git.png" class="img-fluid figure-img" style="width:100.0%" alt="RStudio z odprtim repozitorijem: zavihek Git (desno zgoraj) z gumbi Diff, Commit, Pull, Push in History ter zavihek Terminal z Git Bashem (levo spodaj)."></a></p>
+<figcaption>RStudio z odprtim repozitorijem: zavihek <strong>Git</strong> (desno zgoraj) z gumbi <em>Diff</em>, <em>Commit</em>, <em>Pull</em>, <em>Push</em> in <em>History</em> ter zavihek <strong>Terminal</strong> z Git Bashem (levo spodaj).</figcaption>
+</figure>
+</div>
+<p>Pomen črk v stolpcu <em>Status</em>: <strong>?</strong> nova datoteka, ki je Git še ne spremlja; <strong>A</strong> dodana; <strong>M</strong> spremenjena (<em>modified</em>); <strong>D</strong> izbrisana.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nasvet</span>Terminal v RStudiu
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>RStudio ima poleg konzole tudi zavihek <strong>Terminal</strong> (<em>Tools → Terminal → New Terminal</em>). Na Windows ga lahko nastavite tako, da uporablja Git Bash (<em>Tools → Global Options → Terminal → New terminals open with: Git Bash</em>). Vse ukaze iz prejšnjega poglavja lahko tako izvajate kar v RStudiu. Isti terminal bomo uporabljali na naslednji vaji za PLINK.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-epg-repo" class="level2">
+<h2 class="anchored" data-anchor-id="sec-epg-repo">Vaš repozitorij za vaje EPG</h2>
+<p>Do konca semestra boste vse skripte, poročila in odgovore z vaj nalagali v <strong>en repozitorij</strong>. Ta bo hkrati vaša oddaja in vaša osebna zbirka kode, ki jo boste lahko uporabili tudi kasneje, npr. pri magistrski nalogi.</p>
+<section id="ustvarite-repozitorij" class="level3">
+<h3 class="anchored" data-anchor-id="ustvarite-repozitorij">Ustvarite repozitorij</h3>
+<ol type="1">
+<li>Na GitHubu ustvarite nov repozitorij z imenom <strong><code>EPG-2026-priimek</code></strong> (npr. <code>EPG-2026-novak</code>).</li>
+<li>Nastavitve:
+<ul>
+<li><strong>Private</strong></li>
+<li>obkljukajte <strong>Add a README file</strong></li>
+<li><strong>Add .gitignore</strong> → izberite predlogo <strong>R</strong></li>
+</ul></li>
+<li>Dodajte asistentko kot sodelavko (<em>collaborator</em>): <strong>Settings → Collaborators → Add people</strong> → <code>UrskaGeric</code>.</li>
+<li>Repozitorij odprite kot nov projekt v RStudiu (<em>File → New Project → Version Control → Git</em>).</li>
+</ol>
+</section>
+<section id="struktura-repozitorija" class="level3">
+<h3 class="anchored" data-anchor-id="struktura-repozitorija">Struktura repozitorija</h3>
+<p>Ustvarite mape za vse vaje. Prazne mape Git ne spremlja, zato bodo na GitHubu vidne šele, ko vanje shranite prvo datoteko.</p>
+<pre class="text"><code>EPG-2026-priimek/
+├── README.md              # kdo ste, kaj je v repozitoriju
+├── .gitignore             # datoteke, ki jih Git ne nalaga na GitHub
+├── EPG-2026-priimek.Rproj
+├── E1_git/
+├── E2_plink/
+├── E3_raznolikost/
+├── E4_struktura/
+├── E5_inbriding/
+└── data/                  # podatki (NE gredo na GitHub!)</code></pre>
+</section>
+<section id="gitignore-česa-ne-nalagamo-na-github" class="level3">
+<h3 class="anchored" data-anchor-id="gitignore-česa-ne-nalagamo-na-github"><code>.gitignore</code>: česa ne nalagamo na GitHub</h3>
+<p>Datoteka <code>.gitignore</code> pove Gitu, katerih datotek naj ne spremlja. To je pri populacijski genomiki zelo pomembno:</p>
+<ul>
+<li>GitHub <strong>zavrne datoteke, večje od 100 MB</strong>. VCF datoteka z orli, s katero bomo delali, ima skoraj 600 MB.</li>
+<li>Podatki se med analizo ne spreminjajo in so že shranjeni drugje (npr. v repozitoriju Dryad ob članku). Na GitHub sodi <strong>koda</strong>, ki iz podatkov naredi rezultate.</li>
+<li>Vmesne datoteke (PLINK <code>.bed</code>, <code>.bim</code>, <code>.fam</code>, <code>.log</code> …) lahko kadar koli ponovno izračunate s svojo skripto.</li>
+</ul>
+<p>Na konec datoteke <code>.gitignore</code> (predloga <em>R</em> že vsebuje <code>.Rhistory</code>, <code>.RData</code> in <code>.Rproj.user/</code>) dodajte:</p>
+<pre class="text"><code># --- podatki in vmesne datoteke (EPG) ---
+data/
+*.vcf
+*.vcf.gz
+*.bed
+*.bim
+*.fam
+*.ped
+*.map
+*.raw
+*.log
+*.nosex
+*.exe
+
+# --- renderirani izhodi Quarto/Rmarkdown ---
+*_files/
+*.html</code></pre>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Opomba</span>Kaj pa, če želim oddati HTML poročilo?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Če želite poročilo oddati na GitHub, izbrišite vrstico <code>*.html</code>. Pri Quarto dokumentih je pri tem priporočljivo v glavo dodati <code>embed-resources: true</code>, da je vse (tudi slike) v eni HTML datoteki in mape <code>*_files/</code> ne potrebujete.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Opozorilo</span>Če je velika datoteka že v commitu
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Če ste veliko datoteko pomotoma že dodali v commit, <code>push</code> ne bo uspel, tudi če jo kasneje dodate v <code>.gitignore</code>. V tem primeru prosite za pomoč. Rešitev je, da zadnji commit razveljavite (<code>git reset --soft HEAD~1</code>), datoteko odstranite iz pripravljalnega območja (<code>git rm --cached datoteka</code>) in commit ponovite.</p>
+</div>
+</div>
+</section>
+<section id="readme.md" class="level3">
+<h3 class="anchored" data-anchor-id="readme.md">README.md</h3>
+<p><code>README.md</code> je napisan v <strong>Markdownu</strong>, ki ga že poznate iz vaje 0. GitHub ga prikaže na prvi strani repozitorija. Uredite ga, na primer:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Evolucijska in populacijska genetika 2026/27</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>Avtor: Ime Priimek</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>Repozitorij s skriptami in poročili z vaj pri predmetu EPG.</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vsebina</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Mapa <span class="pp">|</span> Vaja <span class="pp">|</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E1_git/`</span> <span class="pp">|</span> Nadzor različic z Gitom in GitHubom <span class="pp">|</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E2_plink/`</span> <span class="pp">|</span> SNP-ji in PLINK <span class="pp">|</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E3_raznolikost/`</span> <span class="pp">|</span> Genetska raznolikost in diferenciacija <span class="pp">|</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E4_struktura/`</span> <span class="pp">|</span> Populacijska struktura <span class="pp">|</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E5_inbriding/`</span> <span class="pp">|</span> Sorodnost, inbriding in ROH <span class="pp">|</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Podatki</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>Genotipi orlov belorepcev: Hansen et al. (2023), *Molecular Ecology* 32: 1925–1942,</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>doi: <span class="co">[</span><span class="ot">10.1111/mec.16858</span><span class="co">](https://doi.org/10.1111/mec.16858)</span>. Podatki niso del repozitorija.</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="pravilo-za-vse-naslednje-vaje" class="level3">
+<h3 class="anchored" data-anchor-id="pravilo-za-vse-naslednje-vaje">Pravilo za vse naslednje vaje</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Pomembno</span>Po vsaki vaji
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><code>pull</code> na začetku dela,</li>
+<li>shranite skripte in poročila v mapo vaje,</li>
+<li><code>commit</code> z opisnim sporočilom (lahko večkrat med vajo),</li>
+<li><code>push</code> na koncu dela.</li>
+</ol>
+<p>Stanje vašega repozitorija na GitHubu je hkrati vaša oddaja.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="ko-gre-kaj-narobe-razveljavljanje-sprememb-undo" class="level2">
+<h2 class="anchored" data-anchor-id="ko-gre-kaj-narobe-razveljavljanje-sprememb-undo">Ko gre kaj narobe: razveljavljanje sprememb (<em>undo</em>)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Situacija</th>
+<th>Ukaz</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Spremenil/a sem datoteko in želim nazaj zadnjo shranjeno različico</td>
+<td><code>git restore datoteka.R</code></td>
+</tr>
+<tr class="even">
+<td>Datoteko sem dodal/a z <code>git add</code>, pa je ne želim v commitu</td>
+<td><code>git restore --staged datoteka.R</code></td>
+</tr>
+<tr class="odd">
+<td>Zadnji commit ima napačno sporočilo (še ni bil poslan s <code>push</code>)</td>
+<td><code>git commit --amend -m "Novo sporočilo"</code></td>
+</tr>
+<tr class="even">
+<td>Želim razveljaviti commit, ki je že na GitHubu</td>
+<td><code>git revert &lt;hash&gt;</code> (ustvari nov commit, ki spremembe izniči)</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Opozorilo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>git restore datoteka.R</code> nepreklicno zavrže neshranjene spremembe v datoteki. Pred uporabo preverite z <code>git diff</code>.</p>
+</div>
+</div>
+<section id="konflikti" class="level3">
+<h3 class="anchored" data-anchor-id="konflikti">Konflikti</h3>
+<p>Konflikt nastane, kadar je bila ista vrstica iste datoteke spremenjena na dveh mestih (npr. na GitHubu in na vašem računalniku). Ob <code>pull</code> vam Git v datoteko vpiše oznake:</p>
+<pre class="text"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+plot(pca$x[, 1], pca$x[, 2], col = "blue")
+=======
+plot(pca$x[, 1], pca$x[, 2], col = "red")
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main</code></pre>
+<p>Zgornji del je vaša različica, spodnji različica z GitHuba. Ročno pustite pravo vrstico, izbrišite oznake <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code> in <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>, nato pa <code>git add</code>, <code>git commit</code> in <code>git push</code>.</p>
+<p>Pri delu v svojem repozitoriju z enega računalnika se konfliktom izognete, če dosledno uporabljate cikel <code>pull</code> → delo → <code>commit</code> → <code>push</code>.</p>
+</section>
+</section>
+<section id="veje-branches" class="level2">
+<h2 class="anchored" data-anchor-id="veje-branches">Veje (branches)</h2>
+<p>Veje omogočajo, da razvijate nove stvari ali preizkušate ideje, <strong>ne da bi pokvarili delujočo glavno različico</strong> (<code>main</code>). Pri vajah boste delali večinoma na <code>main</code>, veje pa so osnova vsakega skupinskega projekta.</p>
+<ul>
+<li><code>main</code> naj ostane čim bolj stabilna,</li>
+<li>vsaka oseba ali vsaka nova funkcija dobi svojo vejo,</li>
+<li>ko je delo končano in preverjeno, vejo združimo (<em>merge</em>) nazaj v <code>main</code>.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/nove_sheme/veje_merge.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Veja test se odcepi od main, na njej naredimo dva commita, nato jo z git merge združimo nazaj v main."><img src="images/nove_sheme/veje_merge.svg" class="img-fluid figure-img" style="width:95.0%" alt="Veja test se odcepi od main, na njej naredimo dva commita, nato jo z git merge združimo nazaj v main."></a></p>
+<figcaption>Veja <code>test</code> se odcepi od <code>main</code>, na njej naredimo dva commita, nato jo z <code>git merge</code> združimo nazaj v <code>main</code>.</figcaption>
+</figure>
+</div>
+<section id="ustvarjanje-in-preklapljanje-med-vejami" class="level3">
+<h3 class="anchored" data-anchor-id="ustvarjanje-in-preklapljanje-med-vejami">Ustvarjanje in preklapljanje med vejami</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch                 <span class="co"># seznam lokalnih vej (* = trenutna)</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> nov-graf     <span class="co"># ustvari novo vejo in se premakni nanjo</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main            <span class="co"># vrni se na main</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> nov-graf     <span class="co"># izbriši vejo (ko je že združena)</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Opomba</span><code>git switch</code> ali <code>git checkout</code>?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>V starejših navodilih in na slikah boste pogosto videli <code>git checkout</code> (<code>git checkout -b nova-veja</code>). Ukaz deluje, vendar opravlja dve različni nalogi: preklaplja med vejami <strong>in</strong> obnavlja datoteke, kar začetnike zmede. Novejša Git ukaza ju ločita: <code>git switch</code> za veje, <code>git restore</code> za datoteke. Na vajah uporabljamo <code>switch</code>.</p>
+</div>
+</div>
+</section>
+<section id="primer-dela-na-veji" class="level3">
+<h3 class="anchored" data-anchor-id="primer-dela-na-veji">Primer dela na veji</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> nov-graf</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ... urejate datoteke ...</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Dodaj PCA graf z barvami po državah"</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin nov-graf</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ob prvem <code>push</code> nove veje vam GitHub izpiše povezavo za odprtje <strong>zahteve za združitev</strong> (<em>Pull Request</em>). To je predlog, da se veja združi v <code>main</code>, ki ga lahko pregledajo sodelavci.</p>
+</section>
+<section id="združevanje-merge-git-merge" class="level3">
+<h3 class="anchored" data-anchor-id="združevanje-merge-git-merge">Združevanje (<em>merge</em>): <code>git merge</code></h3>
+<p>Premaknite se na vejo, ki jo želite <strong>posodobiti</strong> (običajno <code>main</code>), in vanjo združite drugo vejo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge nov-graf</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>Updating 0c879b4..a09a19b
+Fast-forward
+ E4_struktura/pca.R | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)</code></pre>
+</section>
+</section>
+<section id="grafična-orodja-neobvezno" class="level2">
+<h2 class="anchored" data-anchor-id="grafična-orodja-neobvezno">Grafična orodja (neobvezno)</h2>
+<p>Git Bash vas nauči, kako Git v resnici deluje. Ko ukaze razumete, so grafična orodja priročna:</p>
+<ul>
+<li><strong>RStudio</strong> (zavihek Git): za delo na vajah,</li>
+<li><strong>GitHub Desktop</strong>: preprost program za clone, commit, push in pull,</li>
+<li><strong>Visual Studio Code</strong> (zavihek <em>Source Control</em>): če pišete tudi v Pythonu ali bashu,</li>
+<li><strong>GitKraken</strong>: lep grafični prikaz vej in zgodovine.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Opozorilo</span>Urejanje neposredno na GitHubu
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Na GitHubu lahko datoteke urejate tudi v brskalniku. To je primerno za manjše popravke datoteke README, ne pa za kodo, saj je pred commitom ne morete pognati in preveriti.</p>
+</div>
+</div>
+</section>
+<section id="povzetek-ukazov-cheat-sheet" class="level2">
+<h2 class="anchored" data-anchor-id="povzetek-ukazov-cheat-sheet">Povzetek ukazov (<em>cheat sheet</em>)</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Ime Priimek"</span>   <span class="co"># enkratna nastavitev</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"naslov"</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>url<span class="op">&gt;</span>              <span class="co"># kopija repozitorija z GitHuba</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init                     <span class="co"># nov lokalni repozitorij</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status                   <span class="co"># kaj se je spremenilo</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="op">&lt;</span>datoteka<span class="op">&gt;</span>           <span class="co"># pripravi datoteko za commit</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .                    <span class="co"># pripravi vse spremembe v mapi</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"sporočilo"</span>    <span class="co"># shrani posnetek stanja</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push                     <span class="co"># pošlji commite na GitHub</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                     <span class="co"># prenesi in združi spremembe z GitHuba</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span>            <span class="co"># zgodovina commitov</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff                     <span class="co"># neshranjene spremembe</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore <span class="op">&lt;</span>datoteka<span class="op">&gt;</span>       <span class="co"># zavrzi spremembe v datoteki</span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore <span class="at">--staged</span> <span class="op">&lt;</span>dat.<span class="op">&gt;</span>  <span class="co"># odstrani datoteko iz pripravljalnega območja</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch                   <span class="co"># seznam vej</span></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> <span class="op">&lt;</span>ime<span class="op">&gt;</span>          <span class="co"># ustvari vejo in se premakni nanjo</span></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="op">&lt;</span>ime<span class="op">&gt;</span>             <span class="co"># premakni se na obstoječo vejo</span></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="op">&lt;</span>ime<span class="op">&gt;</span>              <span class="co"># združi vejo v trenutno vejo</span></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> <span class="op">&lt;</span>ime<span class="op">&gt;</span>          <span class="co"># izbriši vejo</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Uradni povzetek ukazov z GitHuba (dve strani, v angleščini) si natisnite ali shranite: <a href="https://education.github.com/git-cheat-sheet-education.pdf"><strong>Git cheat sheet (PDF)</strong></a>.</p>
+</section>
+<section id="sec-naloga" class="level2">
+<h2 class="anchored" data-anchor-id="sec-naloga">Naloga na vaji</h2>
+<ol type="1">
+<li>Ustvarite GitHub račun, namestite Git in ga nastavite (<code>user.name</code>, <code>user.email</code>).</li>
+<li>Ustvarite zasebni repozitorij <strong><code>EPG-2026-priimek</code></strong> z README in predlogo <code>.gitignore</code> za R ter dodajte <code>UrskaGeric</code> kot sodelavko.</li>
+<li>Repozitorij odprite kot projekt v RStudiu.</li>
+<li>Ustvarite mape <code>E1_git</code>, <code>E2_plink</code>, <code>E3_raznolikost</code>, <code>E4_struktura</code>, <code>E5_inbriding</code> in <code>data</code>.</li>
+<li><code>.gitignore</code> dopolnite s pravili iz <a href="#sec-epg-repo" class="quarto-xref"><span>Vaš repozitorij za vaje EPG</span></a>.</li>
+<li>Uredite <code>README.md</code> (ime, opis, tabela vaj).</li>
+<li>V mapo <code>E1_git</code> shranite datoteko <code>ukazi.md</code> s seznamom ukazov, ki ste jih danes uporabili, in vsakemu dodajte en stavek razlage v svojih besedah.</li>
+<li><code>add</code> → <code>commit</code> → <code>push</code>. Preverite, da je vse vidno na GitHubu.</li>
+<li>Ustvarite vejo <code>test</code>, v njej spremenite <code>ukazi.md</code>, naredite commit, vejo združite v <code>main</code> in pošljite na GitHub.</li>
+<li>Povezavo do repozitorija oddajte v spletni učilnici.</li>
+</ol>
+</section>
+<section id="sec-domaca" class="level2">
+<h2 class="anchored" data-anchor-id="sec-domaca">Domača naloga: priprava na vajo 2</h2>
+<p>Na vseh naslednjih vajah bomo analizirali genomske podatke <strong>orla belorepca</strong> (<em>Haliaeetus albicilla</em>) iz članka:</p>
+<blockquote class="blockquote">
+<p>Hansen, C. C. R., Láruson, Á. J., Rasmussen, J. A., et al.&nbsp;(2023). Genomic diversity and differentiation between island and mainland populations of white-tailed eagles (<em>Haliaeetus albicilla</em>). <em>Molecular Ecology</em>, 32, 1925–1942. <a href="https://doi.org/10.1111/mec.16858" class="uri">https://doi.org/10.1111/mec.16858</a></p>
+</blockquote>
+<p>Članek je prosto dostopen (<em>open access</em>): <a href="https://urskageric.github.io/EPG-vaje/literatura/Hansen_2023_MolEcol_orel_belorepec.pdf"><strong>PDF članka</strong></a>. Preberite ga in v svojem repozitoriju ustvarite datoteko <strong><code>E1_git/clanek_orli.md</code></strong>, v kateri na kratko (v nekaj stavkih) odgovorite na vprašanja:</p>
+<ol type="1">
+<li>Katero je glavno raziskovalno vprašanje članka? Zakaj je zanimivo, da je vrsta z veliko sposobnostjo razširjanja genetsko strukturirana?</li>
+<li>Iz katerih držav so vzorci? Katere populacije so <strong>otoške</strong> in katere <strong>celinske</strong>?</li>
+<li>Kaj so <strong>historični</strong> vzorci in zakaj so jih avtorji vključili poleg sodobnih?</li>
+<li>Kakšen tip podatkov so uporabili (sekvenciranje, število SNP-jev) in kako so podatke filtrirali?</li>
+<li>Naštejte analize, ki so jih naredili (npr. genetska raznolikost, F<sub>ST</sub>, PCA, ADMIXTURE, inbriding, efektivna velikost populacije). Katera slika ali tabela prikazuje rezultat posamezne analize?</li>
+<li>Kakšne so glavne ugotovitve glede raznolikosti in inbridinga otoških populacij v primerjavi s celinskimi?</li>
+<li>Kateri štirje zgodovinski dogodki naj bi oblikovali upad efektivne velikosti populacij?</li>
+<li>S svojimi besedami razložite pojme: učinek ustanovitelja, genetski drift, inbriding, filopatrija, efektivna velikost populacije (N<sub>e</sub>).</li>
+</ol>
+<p>Datoteko oddajte s <code>commit</code> in <code>push</code> <strong>pred začetkom vaje 2</strong>. Na vajah 2–5 bomo nekatere od teh analiz ponovili sami in na koncu preverili, ali pridemo do enakih zaključkov kot avtorji.</p>
+</section>
+<section id="za-radovedne-delo-v-skupini" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="za-radovedne-delo-v-skupini">Za radovedne: delo v skupini</h2>
+<p>Pri večjih projektih z več sodelavci se ekipa dogovori o pravilih za veje. Preprosta pravila, ki preprečijo veliko težav:</p>
+<ol type="1">
+<li>ne eksperimentirajte neposredno na <code>main</code>,</li>
+<li>pred začetkom dela vedno <code>pull</code>,</li>
+<li>za vsako novo stvar ustvarite vejo z opisnim imenom (<code>nov-graf</code>, <code>popravek-readme</code>),</li>
+<li>vejo združite šele, ko koda deluje,</li>
+<li>pišite smiselna sporočila commitov.</li>
+</ol>
+<p>Eden bolj znanih dogovorov je <strong>Git flow</strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/git_flow.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Git flow: main (stabilna različica), develop (razvoj), veje feature (nove funkcije), release (priprava nove različice) in hotfix (nujni popravki)."><img src="images/git_flow.png" class="img-fluid figure-img" style="width:80.0%" alt="Git flow: main (stabilna različica), develop (razvoj), veje feature (nove funkcije), release (priprava nove različice) in hotfix (nujni popravki)."></a></p>
+<figcaption>Git flow: <code>main</code> (stabilna različica), <code>develop</code> (razvoj), veje <code>feature</code> (nove funkcije), <code>release</code> (priprava nove različice) in <code>hotfix</code> (nujni popravki).</figcaption>
+</figure>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Veja</th>
+<th>Vloga</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>main</code></td>
+<td>stabilna, objavljena koda</td>
+</tr>
+<tr class="even">
+<td><code>develop</code></td>
+<td>sproten razvoj, združevanje novih funkcij</td>
+</tr>
+<tr class="odd">
+<td><code>feature/*</code></td>
+<td>nove funkcije (iz <code>develop</code>)</td>
+</tr>
+<tr class="even">
+<td><code>release/*</code></td>
+<td>priprava nove različice (iz <code>develop</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>hotfix/*</code></td>
+<td>nujni popravki (iz <code>main</code>)</td>
+</tr>
+</tbody>
+</table>
+<section id="merge-ali-rebase" class="level3">
+<h3 class="anchored" data-anchor-id="merge-ali-rebase">Merge ali rebase?</h3>
+<p>Oba ukaza združita delo z ene veje v drugo, vendar zgodovino obravnavata različno.</p>
+<p><strong>Merge</strong> ohrani dejansko zgodovino in ustvari dodaten commit, ki veji združi:</p>
+<pre class="text"><code>A---B---C---F    (main, F = merge commit)
+         \ /
+          D---E  (veja)</code></pre>
+<p><strong>Rebase</strong> vaše commite „presadi“ na konec druge veje, zato je zgodovina linearna. Pri tem se spremenijo oznake (<em>hash</em>) commitov:</p>
+<pre class="text"><code>A---B---C---D'---E'</code></pre>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Merge</strong></th>
+<th><strong>Rebase</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Zgodovina</td>
+<td>ohrani veje</td>
+<td>linearna, preglednejša</td>
+</tr>
+<tr class="even">
+<td>Varnost na skupnih vejah</td>
+<td>varnejši</td>
+<td>lahko zmede sodelavce</td>
+</tr>
+<tr class="odd">
+<td>Konflikti</td>
+<td>rešite enkrat</td>
+<td>lahko pri vsakem commitu posebej</td>
+</tr>
+</tbody>
+</table>
+<p>Na vajah uporabljamo <strong>merge</strong>. Rebase je koristen, ko osnove sodelovanja že dobro obvladate.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopirano!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopirano!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../index.html" class="pagination-link" aria-label="Uvod">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Uvod</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="220" viewBox="0 0 960 220" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#667"/></marker></defs>
+  <rect width="960" height="220" fill="#ffffff"/>
+  <g text-anchor="middle">
+    <rect x="20" y="30" width="140" height="76" rx="10" fill="#e3e3ea" stroke="#5b5b7a" stroke-width="2"/>
+    <text x="90" y="62" font-family="Consolas, monospace" font-weight="700" font-size="17" fill="#2b2b44">git pull</text>
+    <text x="90" y="86" font-size="13" fill="#2b2b44">na začetku dela</text>
+    <rect x="210" y="30" width="140" height="76" rx="10" fill="#dbe8f6" stroke="#4C78A8" stroke-width="2"/>
+    <text x="280" y="62" font-size="16" font-weight="700" fill="#1f3b5c">urejate</text>
+    <text x="280" y="86" font-size="13" fill="#1f3b5c">skripte v RStudiu</text>
+    <rect x="410" y="30" width="140" height="76" rx="10" fill="#fde5cf" stroke="#E07B1A" stroke-width="2"/>
+    <text x="480" y="62" font-family="Consolas, monospace" font-weight="700" font-size="17" fill="#6b3a0a">git add</text>
+    <text x="480" y="86" font-size="13" fill="#6b3a0a">izberete spremembe</text>
+    <rect x="610" y="30" width="140" height="76" rx="10" fill="#dcefd7" stroke="#3E8E3A" stroke-width="2"/>
+    <text x="680" y="62" font-family="Consolas, monospace" font-weight="700" font-size="17" fill="#1e4d1b">git commit</text>
+    <text x="680" y="86" font-size="13" fill="#1e4d1b">shranite posnetek</text>
+    <rect x="800" y="30" width="140" height="76" rx="10" fill="#e3e3ea" stroke="#5b5b7a" stroke-width="2"/>
+    <text x="870" y="62" font-family="Consolas, monospace" font-weight="700" font-size="17" fill="#2b2b44">git push</text>
+    <text x="870" y="86" font-size="13" fill="#2b2b44">na koncu dela</text>
+  </g>
+  <g stroke="#667" stroke-width="3.5" fill="none">
+    <line x1="162" y1="68" x2="204" y2="68" marker-end="url(#a)"/>
+    <line x1="352" y1="68" x2="404" y2="68" marker-end="url(#a)"/>
+    <line x1="552" y1="68" x2="604" y2="68" marker-end="url(#a)"/>
+    <line x1="752" y1="68" x2="794" y2="68" marker-end="url(#a)"/>
+    <path d="M870,108 V158 H90 V114" marker-end="url(#a)"/>
+  </g>
+  <text x="480" y="190" text-anchor="middle" font-size="14" fill="#444">naslednjič znova od začetka (med delom lahko <tspan font-family="Consolas, monospace">add</tspan> + <tspan font-family="Consolas, monospace">commit</tspan> ponovite večkrat)</text>
+</svg>

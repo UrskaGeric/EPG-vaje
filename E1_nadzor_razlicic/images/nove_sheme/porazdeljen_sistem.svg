@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3E8E3A"/></marker>
+    <marker id="aD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b5b7a"/></marker>
+    <marker id="aO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#E07B1A"/></marker>
+    <marker id="aB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4C78A8"/></marker>
+  </defs>
+  <rect width="960" height="580" fill="#ffffff"/>
+  <rect x="300" y="20" width="360" height="86" rx="12" fill="#e3e3ea" stroke="#5b5b7a" stroke-width="2"/>
+  <text x="480" y="56" text-anchor="middle" font-size="18" font-weight="700" fill="#2b2b44">GitHub</text>
+  <text x="480" y="82" text-anchor="middle" font-size="14" fill="#2b2b44">oddaljeni repozitorij (remote repository)</text>
+
+  <g font-size="14" text-anchor="middle">
+    <rect x="35" y="235" width="270" height="320" rx="14" fill="#f6f8fb" stroke="#9aa6b5" stroke-width="2"/>
+    <text x="170" y="540" font-size="15" font-weight="700" fill="#334">Računalnik 1</text>
+    <rect x="65" y="278" width="210" height="58" rx="9" fill="#dcefd7" stroke="#3E8E3A" stroke-width="2"/>
+    <text x="170" y="302" font-weight="700" fill="#1e4d1b">Lokalni repozitorij</text><text x="170" y="322" font-size="12.5" fill="#1e4d1b">(local repository)</text>
+    <rect x="65" y="452" width="210" height="58" rx="9" fill="#dbe8f6" stroke="#4C78A8" stroke-width="2"/>
+    <text x="170" y="476" font-weight="700" fill="#1f3b5c">Delovna mapa</text><text x="170" y="496" font-size="12.5" fill="#1f3b5c">(working directory)</text>
+
+    <rect x="345" y="235" width="270" height="320" rx="14" fill="#f6f8fb" stroke="#9aa6b5" stroke-width="2"/>
+    <text x="480" y="540" font-size="15" font-weight="700" fill="#334">Računalnik 2</text>
+    <rect x="375" y="278" width="210" height="58" rx="9" fill="#dcefd7" stroke="#3E8E3A" stroke-width="2"/>
+    <text x="480" y="302" font-weight="700" fill="#1e4d1b">Lokalni repozitorij</text><text x="480" y="322" font-size="12.5" fill="#1e4d1b">(local repository)</text>
+    <rect x="375" y="452" width="210" height="58" rx="9" fill="#dbe8f6" stroke="#4C78A8" stroke-width="2"/>
+    <text x="480" y="476" font-weight="700" fill="#1f3b5c">Delovna mapa</text><text x="480" y="496" font-size="12.5" fill="#1f3b5c">(working directory)</text>
+
+    <rect x="655" y="235" width="270" height="320" rx="14" fill="#f6f8fb" stroke="#9aa6b5" stroke-width="2"/>
+    <text x="790" y="540" font-size="15" font-weight="700" fill="#334">Računalnik 3</text>
+    <rect x="685" y="278" width="210" height="58" rx="9" fill="#dcefd7" stroke="#3E8E3A" stroke-width="2"/>
+    <text x="790" y="302" font-weight="700" fill="#1e4d1b">Lokalni repozitorij</text><text x="790" y="322" font-size="12.5" fill="#1e4d1b">(local repository)</text>
+    <rect x="685" y="452" width="210" height="58" rx="9" fill="#dbe8f6" stroke="#4C78A8" stroke-width="2"/>
+    <text x="790" y="476" font-weight="700" fill="#1f3b5c">Delovna mapa</text><text x="790" y="496" font-size="12.5" fill="#1f3b5c">(working directory)</text>
+  </g>
+
+  <g stroke-width="4">
+    <line x1="140" y1="450" x2="140" y2="342" stroke="#E07B1A" marker-end="url(#aO)"/>
+    <line x1="200" y1="338" x2="200" y2="446" stroke="#4C78A8" marker-end="url(#aB)"/>
+    <line x1="450" y1="450" x2="450" y2="342" stroke="#E07B1A" marker-end="url(#aO)"/>
+    <line x1="510" y1="338" x2="510" y2="446" stroke="#4C78A8" marker-end="url(#aB)"/>
+    <line x1="760" y1="450" x2="760" y2="342" stroke="#E07B1A" marker-end="url(#aO)"/>
+    <line x1="820" y1="338" x2="820" y2="446" stroke="#4C78A8" marker-end="url(#aB)"/>
+
+    <line x1="140" y1="276" x2="368" y2="112" stroke="#3E8E3A" marker-end="url(#aG)"/>
+    <line x1="412" y1="108" x2="194" y2="270" stroke="#5b5b7a" marker-end="url(#aD)"/>
+    <line x1="460" y1="276" x2="460" y2="114" stroke="#3E8E3A" marker-end="url(#aG)"/>
+    <line x1="500" y1="108" x2="500" y2="270" stroke="#5b5b7a" marker-end="url(#aD)"/>
+    <line x1="770" y1="276" x2="592" y2="112" stroke="#3E8E3A" marker-end="url(#aG)"/>
+    <line x1="548" y1="108" x2="736" y2="270" stroke="#5b5b7a" marker-end="url(#aD)"/>
+  </g>
+
+  <g font-family="Consolas, monospace" font-weight="700" font-size="14" stroke="#fff" stroke-width="6" paint-order="stroke" stroke-linejoin="round">
+    <text x="130" y="392" text-anchor="end" fill="#6b3a0a">add +</text><text x="130" y="410" text-anchor="end" fill="#6b3a0a">commit</text>
+    <text x="210" y="402" fill="#1f3b5c">merge</text>
+    <text x="440" y="392" text-anchor="end" fill="#6b3a0a">add +</text><text x="440" y="410" text-anchor="end" fill="#6b3a0a">commit</text>
+    <text x="520" y="402" fill="#1f3b5c">merge</text>
+    <text x="750" y="392" text-anchor="end" fill="#6b3a0a">add +</text><text x="750" y="410" text-anchor="end" fill="#6b3a0a">commit</text>
+    <text x="830" y="402" fill="#1f3b5c">merge</text>
+
+    <text x="232" y="180" text-anchor="end" fill="#1e4d1b" font-size="15">push</text>
+    <text x="318" y="214" fill="#2b2b44" font-size="15">pull</text>
+    <text x="452" y="196" text-anchor="end" fill="#1e4d1b" font-size="15">push</text>
+    <text x="508" y="196" fill="#2b2b44" font-size="15">pull</text>
+    <text x="704" y="180" fill="#1e4d1b" font-size="15">push</text>
+    <text x="640" y="214" text-anchor="end" fill="#2b2b44" font-size="15">pull</text>
+  </g>
+</svg>

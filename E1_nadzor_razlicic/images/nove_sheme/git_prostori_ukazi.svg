@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="850" viewBox="0 0 960 850" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="aB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4C78A8"/></marker>
+    <marker id="aO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#E07B1A"/></marker>
+    <marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3E8E3A"/></marker>
+    <marker id="aD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b5b7a"/></marker>
+    <marker id="aR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#B23A48"/></marker>
+  </defs>
+  <rect width="960" height="850" fill="#ffffff"/>
+  <rect x="20" y="12" width="650" height="828" rx="14" fill="#f6f8fb" stroke="#c9d3e0"/>
+  <rect x="700" y="12" width="240" height="828" rx="14" fill="#f4f4f8" stroke="#cfcfdc"/>
+  <text x="345" y="38" text-anchor="middle" font-size="16" font-weight="600" fill="#334">Vaš računalnik (lokalno, local)</text>
+  <text x="820" y="38" text-anchor="middle" font-size="16" font-weight="600" fill="#334">Splet (remote)</text>
+
+  <rect x="35" y="52" width="180" height="70" rx="10" fill="#dbe8f6" stroke="#4C78A8" stroke-width="2"/>
+  <text x="125" y="82" text-anchor="middle" font-size="16" font-weight="700" fill="#1f3b5c">Delovna mapa</text>
+  <text x="125" y="104" text-anchor="middle" font-size="13" fill="#1f3b5c">(working directory)</text>
+  <rect x="255" y="52" width="180" height="70" rx="10" fill="#fde5cf" stroke="#E07B1A" stroke-width="2"/>
+  <text x="345" y="82" text-anchor="middle" font-size="16" font-weight="700" fill="#6b3a0a">Pripravljalno območje</text>
+  <text x="345" y="104" text-anchor="middle" font-size="13" fill="#6b3a0a">(staging area)</text>
+  <rect x="475" y="52" width="180" height="70" rx="10" fill="#dcefd7" stroke="#3E8E3A" stroke-width="2"/>
+  <text x="565" y="82" text-anchor="middle" font-size="16" font-weight="700" fill="#1e4d1b">Lokalni repozitorij</text>
+  <text x="565" y="104" text-anchor="middle" font-size="13" fill="#1e4d1b">(local repository, .git)</text>
+  <rect x="730" y="52" width="180" height="70" rx="10" fill="#e3e3ea" stroke="#5b5b7a" stroke-width="2"/>
+  <text x="820" y="82" text-anchor="middle" font-size="16" font-weight="700" fill="#2b2b44">Oddaljeni repozitorij</text>
+  <text x="820" y="104" text-anchor="middle" font-size="13" fill="#2b2b44">(remote repository, GitHub)</text>
+
+  <g stroke="#b8c0cc" stroke-width="2" stroke-dasharray="4 5">
+    <line x1="125" y1="122" x2="125" y2="825"/><line x1="345" y1="122" x2="345" y2="825"/>
+    <line x1="565" y1="122" x2="565" y2="825"/><line x1="820" y1="122" x2="820" y2="825"/>
+  </g>
+
+  <!-- puščice -->
+  <line x1="127" y1="168" x2="339" y2="168" stroke="#4C78A8" stroke-width="5" marker-end="url(#aB)"/>
+  <line x1="347" y1="226" x2="559" y2="226" stroke="#E07B1A" stroke-width="5" marker-end="url(#aO)"/>
+  <line x1="127" y1="284" x2="559" y2="284" stroke="#4C78A8" stroke-width="5" marker-end="url(#aB)"/>
+  <line x1="567" y1="342" x2="814" y2="342" stroke="#3E8E3A" stroke-width="5" marker-end="url(#aG)"/>
+  <line x1="818" y1="400" x2="571" y2="400" stroke="#5b5b7a" stroke-width="5" marker-end="url(#aD)"/>
+  <line x1="563" y1="458" x2="131" y2="458" stroke="#3E8E3A" stroke-width="5" marker-end="url(#aG)"/>
+  <line x1="818" y1="516" x2="131" y2="516" stroke="#5b5b7a" stroke-width="5" marker-end="url(#aD)"/>
+  <line x1="818" y1="574" x2="131" y2="574" stroke="#5b5b7a" stroke-width="5" stroke-dasharray="14 7" marker-end="url(#aD)"/>
+  <line x1="343" y1="632" x2="131" y2="632" stroke="#B23A48" stroke-width="5" marker-end="url(#aR)"/>
+  <line x1="563" y1="690" x2="131" y2="690" stroke="#B23A48" stroke-width="5" marker-end="url(#aR)"/>
+  <!-- primerjave (diff) -->
+  <rect x="125" y="735" width="220" height="28" rx="5" fill="#d9dbe0" stroke="#9a9fa8"/>
+  <rect x="125" y="793" width="440" height="28" rx="5" fill="#d9dbe0" stroke="#9a9fa8"/>
+
+  <g font-size="14" fill="#222" stroke="#ffffff" stroke-width="6" paint-order="stroke" stroke-linejoin="round" text-anchor="middle">
+    <text x="235" y="156" font-family="Consolas, monospace" font-weight="700">git add / mv / rm</text>
+    <text x="235" y="190" font-size="12.5" fill="#555">izberete spremembe</text>
+    <text x="455" y="214" font-family="Consolas, monospace" font-weight="700">git commit</text>
+    <text x="455" y="248" font-size="12.5" fill="#555">shranite posnetek stanja</text>
+    <text x="345" y="272" font-family="Consolas, monospace" font-weight="700">git commit -a</text>
+    <text x="345" y="306" font-size="12.5" fill="#555">add + commit v enem koraku (samo že spremljane datoteke)</text>
+    <text x="692" y="330" font-family="Consolas, monospace" font-weight="700">git push</text>
+    <text x="692" y="364" font-size="12.5" fill="#555">pošljete na GitHub</text>
+    <text x="692" y="388" font-family="Consolas, monospace" font-weight="700">git fetch</text>
+    <text x="692" y="422" font-size="12.5" fill="#555">prenesete z GitHuba</text>
+    <text x="345" y="446" font-family="Consolas, monospace" font-weight="700">git merge</text>
+    <text x="345" y="480" font-size="12.5" fill="#555">združite v delovno mapo</text>
+    <text x="470" y="504"><tspan font-family="Consolas, monospace" font-weight="700">git pull</tspan> = fetch + merge</text>
+    <text x="470" y="538" font-size="12.5" fill="#555">vsakič na začetku dela</text>
+    <text x="470" y="562"><tspan font-family="Consolas, monospace" font-weight="700">git clone</tspan></text>
+    <text x="470" y="596" font-size="12.5" fill="#555">prvi prenos celotnega repozitorija</text>
+    <text x="235" y="620" font-family="Consolas, monospace" font-weight="700">git restore --staged &lt;dat.&gt;</text>
+    <text x="235" y="654" font-size="12.5" fill="#555">umaknete iz priprave (prej git reset &lt;dat.&gt;)</text>
+    <text x="345" y="678" font-family="Consolas, monospace" font-weight="700">git reset &lt;commit&gt;</text>
+    <text x="345" y="712" font-size="12.5" fill="#555">vrnete se na starejši posnetek</text>
+  </g>
+  <g font-size="14" fill="#222" text-anchor="middle">
+    <text x="235" y="754"><tspan font-family="Consolas, monospace" font-weight="700">git diff</tspan></text>
+    <text x="760" y="754" font-size="12.5" fill="#555" text-anchor="end">← kaj ste spremenili, a še ni v pripravi</text>
+    <text x="345" y="812"><tspan font-family="Consolas, monospace" font-weight="700">git diff HEAD</tspan></text>
+    <text x="800" y="812" font-size="12.5" fill="#555" text-anchor="end">← vse spremembe od zadnjega commita</text>
+  </g>
+</svg>

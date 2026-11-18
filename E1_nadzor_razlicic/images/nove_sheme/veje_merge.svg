@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="290" viewBox="0 0 960 290" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="960" height="290" fill="#ffffff"/>
+  <text x="40" y="66" font-size="15" font-weight="700" fill="#1f3b5c">glavna veja <tspan font-family="Consolas, monospace">main</tspan></text>
+  <line x1="60" y1="100" x2="910" y2="100" stroke="#4C78A8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M240,100 C300,100 300,210 360,210 H600 C660,210 660,100 720,100" fill="none" stroke="#E07B1A" stroke-width="6"/>
+  <g stroke-width="4">
+    <circle cx="120" cy="100" r="15" fill="#fff" stroke="#4C78A8"/>
+    <circle cx="240" cy="100" r="15" fill="#fff" stroke="#4C78A8"/>
+    <circle cx="480" cy="100" r="15" fill="#fff" stroke="#4C78A8"/>
+    <circle cx="720" cy="100" r="19" fill="#dcefd7" stroke="#3E8E3A"/>
+    <circle cx="840" cy="100" r="15" fill="#fff" stroke="#4C78A8"/>
+    <circle cx="420" cy="210" r="15" fill="#fff" stroke="#E07B1A"/>
+    <circle cx="560" cy="210" r="15" fill="#fff" stroke="#E07B1A"/>
+  </g>
+  <g font-size="14" stroke="#fff" stroke-width="6" paint-order="stroke" stroke-linejoin="round">
+    <text x="120" y="138" text-anchor="middle" fill="#1f3b5c">commit</text>
+    <text x="480" y="138" text-anchor="middle" fill="#1f3b5c">commit</text>
+    <text x="840" y="138" text-anchor="middle" fill="#1f3b5c">commit</text>
+    <text x="420" y="248" text-anchor="middle" fill="#6b3a0a">commit</text>
+    <text x="560" y="248" text-anchor="middle" fill="#6b3a0a">commit</text>
+    <text x="720" y="62" text-anchor="middle" fill="#1e4d1b" font-weight="700">združitev (merge commit)</text>
+    <text x="286" y="172" text-anchor="end" font-family="Consolas, monospace" font-weight="700" fill="#6b3a0a">git switch -c test</text>
+    <text x="700" y="166" font-family="Consolas, monospace" font-weight="700" fill="#1e4d1b">git switch main</text>
+    <text x="700" y="186" font-family="Consolas, monospace" font-weight="700" fill="#1e4d1b">git merge test</text>
+  </g>
+  <text x="490" y="280" text-anchor="middle" font-size="15" font-weight="700" fill="#6b3a0a">veja <tspan font-family="Consolas, monospace">test</tspan> (branch): tu preizkušate, <tspan font-family="Consolas, monospace">main</tspan> ostane nedotaknjena</text>
+</svg>
