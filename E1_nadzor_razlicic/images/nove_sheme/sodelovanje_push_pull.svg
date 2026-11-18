@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="820" viewBox="0 0 960 820" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3E8E3A"/></marker>
+    <marker id="aR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#B23A48"/></marker>
+    <marker id="aD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b5b7a"/></marker>
+  </defs>
+  <rect width="960" height="820" fill="#ffffff"/>
+
+  <!-- okvirji korakov -->
+  <g fill="#f6f8fb" stroke="#c9d3e0">
+    <rect x="15" y="12" width="930" height="96" rx="12"/>
+    <rect x="15" y="120" width="930" height="210" rx="12"/>
+    <rect x="15" y="342" width="930" height="150" rx="12"/>
+    <rect x="15" y="504" width="930" height="236" rx="12"/>
+  </g>
+  <g font-size="16" font-weight="700" fill="#223">
+    <text x="32" y="48">1. Začetek</text>
+    <text x="32" y="156">2. Oba delata,</text><text x="32" y="178">Bor prvi naredi push</text>
+    <text x="32" y="378">3. Ana naredi push:</text><text x="32" y="400" fill="#B23A48">GitHub ga zavrne</text>
+    <text x="32" y="540">4. Ana najprej naredi</text><text x="32" y="562">git pull, nato push</text>
+  </g>
+  <g font-size="13" fill="#555">
+    <text x="32" y="72">vsi imajo enaka</text><text x="32" y="90">commita A in B</text>
+    <text x="32" y="420">na GitHubu je commit,</text><text x="32" y="438">ki ga Ana še nima</text>
+  </g>
+
+  <!-- oznake vrstic -->
+  <g font-size="14" font-weight="700" text-anchor="end">
+    <text x="440" y="65" fill="#2b2b44">GitHub, Ana in Bor</text>
+    <text x="440" y="175" fill="#1e4d1b">Bor</text>
+    <text x="440" y="240" fill="#2b2b44">GitHub</text>
+    <text x="440" y="305" fill="#6b3a0a">Ana</text>
+    <text x="440" y="390" fill="#6b3a0a">Ana</text>
+    <text x="440" y="460" fill="#2b2b44">GitHub</text>
+    <text x="440" y="575" fill="#2b2b44">z <tspan font-family="Consolas, monospace">git pull</tspan></text>
+    <text x="440" y="595" font-weight="400" font-size="12.5" fill="#555">(privzeto, merge)</text>
+    <text x="440" y="690" fill="#2b2b44">z <tspan font-family="Consolas, monospace">git pull --rebase</tspan></text>
+  </g>
+
+  <!-- črte -->
+  <g stroke="#9aa6b5" stroke-width="5" fill="none">
+    <line x1="480" y1="60" x2="560" y2="60"/>
+    <line x1="480" y1="170" x2="640" y2="170"/>
+    <line x1="480" y1="235" x2="640" y2="235"/>
+    <line x1="480" y1="300" x2="640" y2="300"/>
+    <line x1="480" y1="385" x2="640" y2="385"/>
+    <line x1="480" y1="455" x2="640" y2="455"/>
+    <line x1="480" y1="570" x2="720" y2="570"/>
+    <path d="M560,570 C590,570 600,625 640,625 C680,625 690,570 720,570"/>
+    <line x1="480" y1="685" x2="720" y2="685"/>
+  </g>
+
+  <!-- commiti -->
+  <g font-size="14" font-weight="700" text-anchor="middle" stroke-width="3">
+    <!-- 1 -->
+    <circle cx="480" cy="60" r="16" fill="#fff" stroke="#4C78A8"/><text x="480" y="65" fill="#1f3b5c">A</text>
+    <circle cx="560" cy="60" r="16" fill="#fff" stroke="#4C78A8"/><text x="560" y="65" fill="#1f3b5c">B</text>
+    <!-- 2: Bor -->
+    <circle cx="480" cy="170" r="16" fill="#fff" stroke="#4C78A8"/><text x="480" y="175" fill="#1f3b5c">A</text>
+    <circle cx="560" cy="170" r="16" fill="#fff" stroke="#4C78A8"/><text x="560" y="175" fill="#1f3b5c">B</text>
+    <circle cx="640" cy="170" r="16" fill="#dcefd7" stroke="#3E8E3A"/><text x="640" y="175" fill="#1e4d1b">C</text>
+    <!-- 2: GitHub -->
+    <circle cx="480" cy="235" r="16" fill="#fff" stroke="#4C78A8"/><text x="480" y="240" fill="#1f3b5c">A</text>
+    <circle cx="560" cy="235" r="16" fill="#fff" stroke="#4C78A8"/><text x="560" y="240" fill="#1f3b5c">B</text>
+    <circle cx="640" cy="235" r="16" fill="#dcefd7" stroke="#3E8E3A"/><text x="640" y="240" fill="#1e4d1b">C</text>
+    <!-- 2: Ana -->
+    <circle cx="480" cy="300" r="16" fill="#fff" stroke="#4C78A8"/><text x="480" y="305" fill="#1f3b5c">A</text>
+    <circle cx="560" cy="300" r="16" fill="#fff" stroke="#4C78A8"/><text x="560" y="305" fill="#1f3b5c">B</text>
+    <circle cx="640" cy="300" r="16" fill="#fde5cf" stroke="#E07B1A"/><text x="640" y="305" fill="#6b3a0a">D</text>
+    <!-- 3: Ana -->
+    <circle cx="480" cy="385" r="16" fill="#fff" stroke="#4C78A8"/><text x="480" y="390" fill="#1f3b5c">A</text>
+    <circle cx="560" cy="385" r="16" fill="#fff" stroke="#4C78A8"/><text x="560" y="390" fill="#1f3b5c">B</text>
+    <circle cx="640" cy="385" r="16" fill="#fde5cf" stroke="#E07B1A"/><text x="640" y="390" fill="#6b3a0a">D</text>
+    <!-- 3: GitHub -->
+    <circle cx="480" cy="455" r="16" fill="#fff" stroke="#4C78A8"/><text x="480" y="460" fill="#1f3b5c">A</text>
+    <circle cx="560" cy="455" r="16" fill="#fff" stroke="#4C78A8"/><text x="560" y="460" fill="#1f3b5c">B</text>
+    <circle cx="640" cy="455" r="16" fill="#dcefd7" stroke="#3E8E3A"/><text x="640" y="460" fill="#1e4d1b">C</text>
+    <!-- 4: merge -->
+    <circle cx="480" cy="570" r="16" fill="#fff" stroke="#4C78A8"/><text x="480" y="575" fill="#1f3b5c">A</text>
+    <circle cx="560" cy="570" r="16" fill="#fff" stroke="#4C78A8"/><text x="560" y="575" fill="#1f3b5c">B</text>
+    <circle cx="640" cy="570" r="16" fill="#dcefd7" stroke="#3E8E3A"/><text x="640" y="575" fill="#1e4d1b">C</text>
+    <circle cx="640" cy="625" r="16" fill="#fde5cf" stroke="#E07B1A"/><text x="640" y="630" fill="#6b3a0a">D</text>
+    <circle cx="720" cy="570" r="18" fill="#e3e3ea" stroke="#5b5b7a"/><text x="720" y="575" fill="#2b2b44">M</text>
+    <!-- 4: rebase -->
+    <circle cx="480" cy="685" r="16" fill="#fff" stroke="#4C78A8"/><text x="480" y="690" fill="#1f3b5c">A</text>
+    <circle cx="560" cy="685" r="16" fill="#fff" stroke="#4C78A8"/><text x="560" y="690" fill="#1f3b5c">B</text>
+    <circle cx="640" cy="685" r="16" fill="#dcefd7" stroke="#3E8E3A"/><text x="640" y="690" fill="#1e4d1b">C</text>
+    <circle cx="720" cy="685" r="16" fill="#fde5cf" stroke="#E07B1A"/><text x="720" y="690" fill="#6b3a0a">D'</text>
+  </g>
+
+  <!-- puščice push -->
+  <line x1="640" y1="188" x2="640" y2="214" stroke="#3E8E3A" stroke-width="4" marker-end="url(#aG)"/>
+  <text x="652" y="206" font-family="Consolas, monospace" font-weight="700" font-size="14" fill="#1e4d1b">git push ✓</text>
+  <line x1="640" y1="403" x2="640" y2="434" stroke="#B23A48" stroke-width="4" stroke-dasharray="6 4" marker-end="url(#aR)"/>
+  <text x="628" y="424" text-anchor="end" font-family="Consolas, monospace" font-weight="700" font-size="14" fill="#B23A48">git push ✗ (rejected)</text>
+
+  <!-- opisi -->
+  <g font-size="13.5" fill="#333">
+    <text x="600" y="65">enako stanje povsod</text>
+    <text x="668" y="175">C: <tspan font-style="italic">Popravi filtriranje SNP-jev</tspan></text>
+    <text x="668" y="240">zdaj ima C tudi GitHub</text>
+    <text x="668" y="305">D: <tspan font-style="italic">Dodaj PCA graf</tspan> (samo pri Ani)</text>
+  </g>
+  <rect x="700" y="364" width="232" height="114" rx="10" fill="#fbe9eb" stroke="#B23A48"/>
+  <g font-size="13.5" fill="#5a1520">
+    <text x="714" y="390">GitHub ima C, Ana pa ne.</text>
+    <text x="714" y="412">Git ne dovoli, da bi Ana s</text>
+    <text x="714" y="432">svojim push prepisala</text>
+    <text x="714" y="452">Borovo delo.</text>
+  </g>
+  <g font-size="13.5" fill="#333">
+    <text x="752" y="566">M = združitev C in D</text>
+    <text x="752" y="586" fill="#555" font-size="12.5">zgodovina ohrani razvejitev</text>
+    <text x="752" y="681">D' = D, presajen za C</text>
+    <text x="752" y="701" fill="#555" font-size="12.5">zgodovina je ravna črta</text>
+  </g>
+  <text x="480" y="728" font-size="14" font-weight="700" fill="#1e4d1b">Nato <tspan font-family="Consolas, monospace">git push</tspan> ✓ – zdaj imajo vsi oba commita, C in D.</text>
+
+  <!-- konflikt -->
+  <text x="480" y="770" text-anchor="middle" font-size="14" fill="#333">Konflikt (<tspan font-style="italic">merge conflict</tspan>) nastane samo, če sta Ana in Bor spremenila <tspan font-weight="700">iste vrstice iste datoteke</tspan>.</text>
+  <text x="480" y="795" text-anchor="middle" font-size="14" fill="#333">Takrat Git pri <tspan font-family="Consolas, monospace">git pull</tspan> vpraša, katero različico obdržati.</text>
+</svg>

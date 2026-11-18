@@ -209,6 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#ko-gre-kaj-narobe-razveljavljanje-sprememb-undo" id="toc-ko-gre-kaj-narobe-razveljavljanje-sprememb-undo" class="nav-link" data-scroll-target="#ko-gre-kaj-narobe-razveljavljanje-sprememb-undo">Ko gre kaj narobe: razveljavljanje sprememb (<em>undo</em>)</a>
   <ul class="collapse">
+  <li><a href="#ko-dva-delata-hkrati" id="toc-ko-dva-delata-hkrati" class="nav-link" data-scroll-target="#ko-dva-delata-hkrati">Ko dva delata hkrati</a></li>
   <li><a href="#konflikti" id="toc-konflikti" class="nav-link" data-scroll-target="#konflikti">Konflikti</a></li>
   </ul></li>
   <li><a href="#veje-branches" id="toc-veje-branches" class="nav-link" data-scroll-target="#veje-branches">Veje (branches)</a>
@@ -975,6 +976,23 @@ Opozorilo
 <p><code>git restore datoteka.R</code> nepreklicno zavrže neshranjene spremembe v datoteki. Pred uporabo preverite z <code>git diff</code>.</p>
 </div>
 </div>
+<section id="ko-dva-delata-hkrati" class="level3">
+<h3 class="anchored" data-anchor-id="ko-dva-delata-hkrati">Ko dva delata hkrati</h3>
+<p>Kaj se zgodi, ko dva človeka (Ana in Bor) delata na istem repozitoriju in oba pošljeta spremembe na GitHub?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/nove_sheme/sodelovanje_push_pull.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Ana in Bor delata hkrati. Bor prvi naredi push. Anin push GitHub zavrne, ker ima commit C, ki ga Ana še nima. Ana zato najprej naredi git pull (Borov commit združi s svojim) in šele nato uspešno push."><img src="images/nove_sheme/sodelovanje_push_pull.svg" class="img-fluid figure-img" style="width:95.0%" alt="Ana in Bor delata hkrati. Bor prvi naredi push. Anin push GitHub zavrne, ker ima commit C, ki ga Ana še nima. Ana zato najprej naredi git pull (Borov commit združi s svojim) in šele nato uspešno push."></a></p>
+<figcaption>Ana in Bor delata hkrati. Bor prvi naredi <code>push</code>. Anin <code>push</code> GitHub zavrne, ker ima commit C, ki ga Ana še nima. Ana zato najprej naredi <code>git pull</code> (Borov commit združi s svojim) in šele nato uspešno <code>push</code>.</figcaption>
+</figure>
+</div>
+<p>Zakaj je to dobro:</p>
+<ul>
+<li><strong>nihče ne more po nesreči prepisati dela drugega</strong>: Git zavrne <code>push</code>, dokler nimate vseh sprememb z GitHuba,</li>
+<li><strong>delo obeh se ohrani</strong>: po <code>git pull</code> sta v zgodovini oba commita, C in D,</li>
+<li><strong>Git večino združevanja naredi sam</strong>; vašo pomoč potrebuje samo pri konfliktu.</li>
+</ul>
+<p>Isto se zgodi tudi, če delate sami na dveh računalnikih (npr. doma in na fakulteti). Zato velja pravilo: <strong>pred začetkom dela vedno <code>git pull</code>.</strong></p>
+</section>
 <section id="konflikti" class="level3">
 <h3 class="anchored" data-anchor-id="konflikti">Konflikti</h3>
 <p>Konflikt nastane, kadar je bila ista vrstica iste datoteke spremenjena na dveh mestih (npr. na GitHubu in na vašem računalniku). Ob <code>pull</code> vam Git v datoteko vpiše oznake:</p>
@@ -997,7 +1015,7 @@ plot(pca$x[, 1], pca$x[, 2], col = "red")
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/nove_sheme/veje_merge.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Veja test se odcepi od main, na njej naredimo dva commita, nato jo z git merge združimo nazaj v main."><img src="images/nove_sheme/veje_merge.svg" class="img-fluid figure-img" style="width:95.0%" alt="Veja test se odcepi od main, na njej naredimo dva commita, nato jo z git merge združimo nazaj v main."></a></p>
+<p><a href="images/nove_sheme/veje_merge.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Veja test se odcepi od main, na njej naredimo dva commita, nato jo z git merge združimo nazaj v main."><img src="images/nove_sheme/veje_merge.svg" class="img-fluid figure-img" style="width:95.0%" alt="Veja test se odcepi od main, na njej naredimo dva commita, nato jo z git merge združimo nazaj v main."></a></p>
 <figcaption>Veja <code>test</code> se odcepi od <code>main</code>, na njej naredimo dva commita, nato jo z <code>git merge</code> združimo nazaj v <code>main</code>.</figcaption>
 </figure>
 </div>
@@ -1138,7 +1156,7 @@ Fast-forward
 <p>Eden bolj znanih dogovorov je <strong>Git flow</strong>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/git_flow.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Git flow: main (stabilna različica), develop (razvoj), veje feature (nove funkcije), release (priprava nove različice) in hotfix (nujni popravki)."><img src="images/git_flow.png" class="img-fluid figure-img" style="width:80.0%" alt="Git flow: main (stabilna različica), develop (razvoj), veje feature (nove funkcije), release (priprava nove različice) in hotfix (nujni popravki)."></a></p>
+<p><a href="images/git_flow.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Git flow: main (stabilna različica), develop (razvoj), veje feature (nove funkcije), release (priprava nove različice) in hotfix (nujni popravki)."><img src="images/git_flow.png" class="img-fluid figure-img" style="width:80.0%" alt="Git flow: main (stabilna različica), develop (razvoj), veje feature (nove funkcije), release (priprava nove različice) in hotfix (nujni popravki)."></a></p>
 <figcaption>Git flow: <code>main</code> (stabilna različica), <code>develop</code> (razvoj), veje <code>feature</code> (nove funkcije), <code>release</code> (priprava nove različice) in <code>hotfix</code> (nujni popravki).</figcaption>
 </figure>
 </div>
