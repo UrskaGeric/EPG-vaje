@@ -1212,16 +1212,29 @@ Fast-forward
 <section id="sec-naloga" class="level2">
 <h2 class="anchored" data-anchor-id="sec-naloga">Naloga na vaji</h2>
 <ol type="1">
-<li>Ustvarite GitHub račun, namestite Git in ga nastavite (<code>user.name</code>, <code>user.email</code>).</li>
-<li>Ustvarite zasebni repozitorij <strong><code>EPG-2026-priimek</code></strong> z README in predlogo <code>.gitignore</code> za R ter dodajte <code>UrskaGeric</code> kot sodelavko.</li>
-<li>Repozitorij odprite kot projekt v RStudiu.</li>
-<li>Ustvarite mape <code>E1_git</code>, <code>E2_plink</code>, <code>E3_raznolikost</code>, <code>E4_struktura</code>, <code>E5_inbriding</code> in <code>data</code>.</li>
-<li><code>.gitignore</code> dopolnite s pravili iz <a href="#sec-epg-repo" class="quarto-xref"><span>Vaš repozitorij za vaje EPG</span></a>.</li>
-<li>Uredite <code>README.md</code> (ime, opis, tabela vaj).</li>
-<li>V mapo <code>E1_git</code> shranite datoteko <code>ukazi.md</code> s seznamom ukazov, ki ste jih danes uporabili, in vsakemu dodajte en stavek razlage v svojih besedah.</li>
-<li><code>add</code> → <code>commit</code> → <code>push</code>. Preverite, da je vse vidno na GitHubu.</li>
-<li>Ustvarite vejo <code>test</code>, v njej spremenite <code>ukazi.md</code>, naredite commit, vejo združite v <code>main</code> in pošljite na GitHub.</li>
-<li>Povezavo do repozitorija oddajte v spletni učilnici.</li>
+<li><p>Ustvarite GitHub račun, namestite Git in ga nastavite (<code>user.name</code>, <code>user.email</code>).</p></li>
+<li><p>Ustvarite zasebni repozitorij <strong><code>EPG-2026-priimek</code></strong> z README in predlogo <code>.gitignore</code> za R ter dodajte <code>UrskaGeric</code> kot sodelavko.</p></li>
+<li><p>Repozitorij klonirajte v RStudiu (<em>File → New Project → Version Control → Git</em>) v mapo <code>~/GitHub</code> (ne v OneDrive). RStudio ga odpre kot projekt.</p></li>
+<li><p>Ustvarite mape <code>E1_git</code>, <code>E2_plink</code>, <code>E3_raznolikost</code>, <code>E4_struktura</code>, <code>E5_inbriding</code> in <code>data</code>.</p></li>
+<li><p><code>.gitignore</code> dopolnite s pravili iz <a href="#sec-epg-repo" class="quarto-xref"><span>Vaš repozitorij za vaje EPG</span></a>.</p></li>
+<li><p>Uredite <code>README.md</code> (ime, opis, tabela vaj).</p></li>
+<li><p>V RStudiu odprite novo R skripto (<em>File → New File → R Script</em>), prepišite spodnjo kodo, jo poženite in shranite kot <code>E1_git/prva_skripta.R</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Moja prva skripta v repozitoriju EPG</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Avtor: Ime Priimek</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># izmišljene frekvence alela v štirih populacijah orla belorepca</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">IS =</span> <span class="fl">0.12</span>, <span class="at">GL =</span> <span class="fl">0.10</span>, <span class="at">NO =</span> <span class="fl">0.35</span>, <span class="at">DK =</span> <span class="fl">0.40</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># pričakovana heterozigotnost za en lokus z dvema aleloma: He = 2pq</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>He <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>He</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(He, <span class="at">col =</span> <span class="st">"steelblue"</span>,</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Pričakovana heterozigotnost (He)"</span>,</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Primer: He po populacijah"</span>)</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>V zavihku <strong>Git</strong> v RStudiu označite vse spremembe (<em>Staged</em>) → <strong>Commit</strong> (sporočilo npr. <code>Dodaj prvo R skripto</code>) → <strong>Push</strong>. Na GitHubu preverite, da sta vidna <code>README.md</code> in <code>E1_git/prva_skripta.R</code>.</p></li>
+<li><p>Ustvarite vejo <code>test</code> in v njej v skripti spremenite barvo grafa (npr. <code>col = "darkorange"</code>). Naredite commit, vejo združite v <code>main</code> in pošljite na GitHub.</p></li>
+<li><p>Povezavo do repozitorija oddajte v spletni učilnici.</p></li>
 </ol>
 </section>
 <section id="sec-domaca" class="level2">
