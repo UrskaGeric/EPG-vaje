@@ -181,6 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#prva-nastavitev-kdo-ste" id="toc-prva-nastavitev-kdo-ste" class="nav-link" data-scroll-target="#prva-nastavitev-kdo-ste">Prva nastavitev: kdo ste</a></li>
   <li><a href="#prijava-v-github-iz-računalnika-authentication" id="toc-prijava-v-github-iz-računalnika-authentication" class="nav-link" data-scroll-target="#prijava-v-github-iz-računalnika-authentication">Prijava v GitHub iz računalnika (<em>authentication</em>)</a></li>
   </ul></li>
+  <li><a href="#sec-repozitoriji" id="toc-sec-repozitoriji" class="nav-link" data-scroll-target="#sec-repozitoriji">S katerimi repozitoriji bomo delali</a></li>
   <li><a href="#prvi-repozitorij-v-git-bashu" id="toc-prvi-repozitorij-v-git-bashu" class="nav-link" data-scroll-target="#prvi-repozitorij-v-git-bashu">Prvi repozitorij v Git Bashu</a>
   <ul class="collapse">
   <li><a href="#ustvarite-repozitorij-na-githubu" id="toc-ustvarite-repozitorij-na-githubu" class="nav-link" data-scroll-target="#ustvarite-repozitorij-na-githubu">Ustvarite repozitorij na GitHubu</a></li>
@@ -493,6 +494,91 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
+<section id="sec-repozitoriji" class="level2">
+<h2 class="anchored" data-anchor-id="sec-repozitoriji">S katerimi repozitoriji bomo delali</h2>
+<p>Na vajah boste srečali tri repozitorije. Pomembno je, da veste, kateri je kateri:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Repozitorij</th>
+<th>Kdo ga ustvari</th>
+<th>Kaj je v njem</th>
+<th>Kaj z njim naredite</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>git-vaja</code></td>
+<td>vi, danes</td>
+<td>testne datoteke</td>
+<td>na njem se naučite ukazov; po vaji ga lahko izbrišete</td>
+</tr>
+<tr class="even">
+<td><code>EPG-2026-priimek</code></td>
+<td>vi, danes</td>
+<td>vaše skripte, poročila in odgovori z vseh vaj</td>
+<td><strong>vaš glavni repozitorij in vaša oddaja</strong> (<a href="#sec-epg-repo" class="quarto-xref"><span>Vaš repozitorij za vaje EPG</span></a>)</td>
+</tr>
+<tr class="odd">
+<td>navodila za vaje</td>
+<td>asistentka</td>
+<td>spletna navodila za vse vaje</td>
+<td>samo berete; po želji ga klonirate in pred vsako vajo posodobite z <code>git pull</code></td>
+</tr>
+</tbody>
+</table>
+<p>Vsak repozitorij obstaja na dveh mestih: <strong>na GitHubu</strong> (oddaljeni repozitorij) in <strong>na vašem računalniku</strong> (lokalni klon). Na računalnik ga prenesete s kloniranjem (<em>clone</em>), in sicer na enega od dveh načinov, ki naredita <strong>isto</strong>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Terminal (Git Bash)</th>
+<th>RStudio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Kloniranje</td>
+<td><code>git clone &lt;URL&gt;</code></td>
+<td><em>File → New Project → Version Control → Git</em> → prilepite URL</td>
+</tr>
+<tr class="even">
+<td>Rezultat</td>
+<td>mapa z repozitorijem</td>
+<td>ista mapa in še datoteka <code>.Rproj</code>; RStudio jo odpre kot projekt</td>
+</tr>
+</tbody>
+</table>
+<p>RStudio v ozadju požene isti ukaz <code>git clone</code>. Danes bomo <code>git-vaja</code> klonirali v terminalu (da vidite, kaj se dogaja), <code>EPG-2026-priimek</code> pa v RStudiu (tako boste delali na vseh naslednjih vajah).</p>
+<p>Vse repozitorije imejte v eni mapi, npr. <code>GitHub</code> v vaši domači mapi (<code>C:/Users/ime/GitHub</code>):</p>
+<pre class="text"><code>GitHub/
+├── git-vaja/
+└── EPG-2026-priimek/</code></pre>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Opozorilo</span>Ne klonirajte v OneDrive, Dropbox ali Google Drive
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Na Windows je mapa <em>Dokumenti</em> (<em>Documents</em>) pogosto sinhronizirana z OneDrive. Sinhronizacija v oblak se ne razume z Gitom (zaklenjene ali podvojene datoteke v skriti mapi <code>.git</code>). Repozitorije zato shranjujte v mapo, ki ni v oblaku, npr. <code>C:/Users/ime/GitHub</code>. Varnostna kopija vaših skript je tako ali tako GitHub.</p>
+</div>
+</div>
+</section>
 <section id="prvi-repozitorij-v-git-bashu" class="level2">
 <h2 class="anchored" data-anchor-id="prvi-repozitorij-v-git-bashu">Prvi repozitorij v Git Bashu</h2>
 <p>Najprej se naučimo ukaze v ukazni vrstici. Tako boste razumeli, kaj se dogaja v ozadju, ko boste kasneje klikali gumbe v RStudiu.</p>
@@ -551,16 +637,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>V Git Bashu se premaknite v mapo, kjer želite imeti svoje projekte, in klonirajte repozitorij:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/Documents/GitHub</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Documents/GitHub</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/UPORABNISKO-IME/git-vaja.git</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/GitHub</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/GitHub</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/UPORABNISKO-IME/git-vaja.git</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="text"><code>Cloning into 'git-vaja'...
 remote: Enumerating objects: 3, done.
 remote: Counting objects: 100% (3/3), done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 Receiving objects: 100% (3/3), done.</code></pre>
 <p>Premaknite se v novo mapo repozitorija:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> git-vaja</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> git-vaja</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Git Bash v vrstici z ukazom pokaže nekaj koristnih informacij: zeleno uporabniško ime in računalnik, rumeno trenutno mapo in, kadar ste v Git repozitoriju, modro trenutno <strong>vejo</strong> (<em>branch</em>, npr. <code>(main)</code>).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -572,7 +658,7 @@ Receiving objects: 100% (3/3), done.</code></pre>
 <section id="git-status-kaj-se-je-spremenilo" class="level3">
 <h3 class="anchored" data-anchor-id="git-status-kaj-se-je-spremenilo"><code>git status</code>: kaj se je spremenilo?</h3>
 <p><code>git status</code> je ukaz, ki ga boste uporabljali najpogosteje. Pokaže stanje delovne mape glede na zadnji commit.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="text"><code>On branch main
 Your branch is up to date with 'origin/main'.
 
@@ -596,8 +682,8 @@ nothing added to commit but untracked files present (use "git add" to track)</co
 </section>
 <section id="git-add-pripravite-spremembe-stage" class="level3">
 <h3 class="anchored" data-anchor-id="git-add-pripravite-spremembe-stage"><code>git add</code>: pripravite spremembe (<em>stage</em>)</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add scripts/test.R   <span class="co"># ena datoteka</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .                <span class="co"># vse spremembe v trenutni mapi (previdno!)</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add scripts/test.R   <span class="co"># ena datoteka</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .                <span class="co"># vse spremembe v trenutni mapi (previdno!)</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Ponovno preverite z <code>git status</code>. Datoteke, pripravljene za commit, so izpisane zeleno:</p>
 <pre class="text"><code>Changes to be committed:
   (use "git restore --staged &lt;file&gt;..." to unstage)
@@ -611,7 +697,7 @@ nothing added to commit but untracked files present (use "git add" to track)</co
 </section>
 <section id="git-commit-shranite-posnetek-stanja-commit" class="level3">
 <h3 class="anchored" data-anchor-id="git-commit-shranite-posnetek-stanja-commit"><code>git commit</code>: shranite posnetek stanja (<em>commit</em>)</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Dodaj testno skripto"</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Dodaj testno skripto"</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="text"><code>[main 0c879b4] Dodaj testno skripto
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 scripts/test.R</code></pre>
@@ -631,13 +717,13 @@ nothing added to commit but untracked files present (use "git add" to track)</co
 </div>
 <section id="bližnjica-git-commit--a" class="level4">
 <h4 class="anchored" data-anchor-id="bližnjica-git-commit--a">Bližnjica: <code>git commit -a</code></h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-a</span> <span class="at">-m</span> <span class="st">"Posodobi obstoječe skripte"</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-a</span> <span class="at">-m</span> <span class="st">"Posodobi obstoječe skripte"</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Ukaz v enem koraku pripravi in shrani <strong>spremembe že spremljanih datotek</strong>. <strong>Novih</strong> datotek (<em>untracked</em>) ne doda. Dokler se ne navadite, raje uporabljajte ločena koraka <code>git add</code> in <code>git commit</code>.</p>
 </section>
 </section>
 <section id="git-push-pošljite-push-spremembe-na-github" class="level3">
 <h3 class="anchored" data-anchor-id="git-push-pošljite-push-spremembe-na-github"><code>git push</code>: pošljite (<em>push</em>) spremembe na GitHub</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="text"><code>To https://github.com/UPORABNISKO-IME/git-vaja.git
    c82b3ae..0c879b4  main -&gt; main</code></pre>
 <p>Osvežite stran repozitorija na GitHubu. Nova datoteka in commit sta zdaj vidna tudi tam.</p>
@@ -651,7 +737,7 @@ nothing added to commit but untracked files present (use "git add" to track)</co
 <section id="git-pull-prenesite-pull-spremembe-z-githuba" class="level3">
 <h3 class="anchored" data-anchor-id="git-pull-prenesite-pull-spremembe-z-githuba"><code>git pull</code>: prenesite (<em>pull</em>) spremembe z GitHuba</h3>
 <p>Na GitHubu v brskalniku uredite datoteko <code>README.md</code> (ikona svinčnika → <em>Commit changes</em>). S tem simulirate spremembo, ki jo je naredil nekdo drug ali vi na drugem računalniku. Nato na računalniku:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="text"><code>Updating 0c879b4..5e1a2f3
 Fast-forward
  README.md | 2 ++
@@ -673,9 +759,9 @@ Fast-forward
 </section>
 <section id="git-log-in-git-diff-zgodovina-log-in-razlike-diff" class="level3">
 <h3 class="anchored" data-anchor-id="git-log-in-git-diff-zgodovina-log-in-razlike-diff"><code>git log</code> in <code>git diff</code>: zgodovina (<em>log</em>) in razlike (<em>diff</em>)</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span>     <span class="co"># kratek seznam vseh commitov</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff              <span class="co"># kaj ste spremenili, a še niste dodali z git add</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span>     <span class="co"># kaj je pripravljeno za naslednji commit</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span>     <span class="co"># kratek seznam vseh commitov</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff              <span class="co"># kaj ste spremenili, a še niste dodali z git add</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span>     <span class="co"># kaj je pripravljeno za naslednji commit</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="text"><code>5e1a2f3 (HEAD -&gt; main, origin/main) Update README.md
 0c879b4 Dodaj testno skripto
 c82b3ae Initial commit</code></pre>
@@ -683,13 +769,13 @@ c82b3ae Initial commit</code></pre>
 <section id="git-init-nov-repozitorij-iz-obstoječe-mape" class="level3">
 <h3 class="anchored" data-anchor-id="git-init-nov-repozitorij-iz-obstoječe-mape"><code>git init</code>: nov repozitorij iz obstoječe mape</h3>
 <p>Če imate projekt že na računalniku in ga želite šele zdaj dati pod nadzor različic:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pot/do/projekta</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pot/do/projekta</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="text"><code>Initialized empty Git repository in .../projekt/.git/</code></pre>
 <p>Git ustvari skrito mapo <code>.git</code>, v kateri hrani vso zgodovino (<code>HEAD</code>, <code>objects</code>, <code>refs</code> …). Te mape ne urejajte ročno in je ne brišite, saj s tem izbrišete celotno zgodovino.</p>
 <p>Da lokalni repozitorij povežete z GitHubom, na GitHubu ustvarite <strong>prazen</strong> repozitorij (brez README) in nato:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/UPORABNISKO-IME/projekt.git</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/UPORABNISKO-IME/projekt.git</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -725,10 +811,24 @@ c82b3ae Initial commit</code></pre>
 <ol type="1">
 <li><strong>File → New Project → Version Control → Git</strong>.</li>
 <li>V <em>Repository URL</em> prilepite HTTPS naslov repozitorija z GitHuba.</li>
-<li>Izberite mapo (<em>Create project as subdirectory of</em>), npr. <code>Documents/GitHub</code>.</li>
+<li>Izberite mapo (<em>Create project as subdirectory of</em>), npr. <code>C:/Users/ime/GitHub</code> (ne v OneDrive).</li>
 <li>Kliknite <strong>Create Project</strong>.</li>
 </ol>
 <p>RStudio repozitorij klonira, ustvari v njem RStudio projekt (<code>.Rproj</code>) in ga odpre. Desno zgoraj se pojavi zavihek <strong>Git</strong>.</p>
+<p>Tako boste odprli svoj repozitorij <code>EPG-2026-priimek</code> (<a href="#sec-epg-repo" class="quarto-xref"><span>Vaš repozitorij za vaje EPG</span></a>). Ko je projekt enkrat ustvarjen, ga naslednjič odprete z dvoklikom na datoteko <code>.Rproj</code> ali v RStudiu prek <em>File → Open Project</em>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Opomba</span>Repozitorij ste že klonirali v terminalu?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Potem ga ne klonirajte še enkrat. V RStudiu izberite <em>File → New Project → <strong>Existing Directory</strong></em> in izberite mapo repozitorija. RStudio sam prepozna, da gre za Git repozitorij, in prikaže zavihek <strong>Git</strong>.</p>
+</div>
+</div>
 </section>
 <section id="zavihek-git" class="level3">
 <h3 class="anchored" data-anchor-id="zavihek-git">Zavihek Git</h3>
@@ -887,26 +987,26 @@ data/
 <section id="readme.md" class="level3">
 <h3 class="anchored" data-anchor-id="readme.md">README.md</h3>
 <p><code>README.md</code> je napisan v <strong>Markdownu</strong>, ki ga že poznate iz vaje 0. GitHub ga prikaže na prvi strani repozitorija. Uredite ga, na primer:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Evolucijska in populacijska genetika 2026/27</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>Avtor: Ime Priimek</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>Repozitorij s skriptami in poročili z vaj pri predmetu EPG.</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vsebina</span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Mapa <span class="pp">|</span> Vaja <span class="pp">|</span></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|</span></span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E1_git/`</span> <span class="pp">|</span> Nadzor različic z Gitom in GitHubom <span class="pp">|</span></span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E2_plink/`</span> <span class="pp">|</span> SNP-ji in PLINK <span class="pp">|</span></span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E3_raznolikost/`</span> <span class="pp">|</span> Genetska raznolikost in diferenciacija <span class="pp">|</span></span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E4_struktura/`</span> <span class="pp">|</span> Populacijska struktura <span class="pp">|</span></span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E5_inbriding/`</span> <span class="pp">|</span> Sorodnost, inbriding in ROH <span class="pp">|</span></span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Podatki</span></span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>Genotipi orlov belorepcev: Hansen et al. (2023), *Molecular Ecology* 32: 1925–1942,</span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>doi: <span class="co">[</span><span class="ot">10.1111/mec.16858</span><span class="co">](https://doi.org/10.1111/mec.16858)</span>. Podatki niso del repozitorija.</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Evolucijska in populacijska genetika 2026/27</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>Avtor: Ime Priimek</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>Repozitorij s skriptami in poročili z vaj pri predmetu EPG.</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vsebina</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Mapa <span class="pp">|</span> Vaja <span class="pp">|</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E1_git/`</span> <span class="pp">|</span> Nadzor različic z Gitom in GitHubom <span class="pp">|</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E2_plink/`</span> <span class="pp">|</span> SNP-ji in PLINK <span class="pp">|</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E3_raznolikost/`</span> <span class="pp">|</span> Genetska raznolikost in diferenciacija <span class="pp">|</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E4_struktura/`</span> <span class="pp">|</span> Populacijska struktura <span class="pp">|</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`E5_inbriding/`</span> <span class="pp">|</span> Sorodnost, inbriding in ROH <span class="pp">|</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Podatki</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>Genotipi orlov belorepcev: Hansen et al. (2023), *Molecular Ecology* 32: 1925–1942,</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>doi: <span class="co">[</span><span class="ot">10.1111/mec.16858</span><span class="co">](https://doi.org/10.1111/mec.16858)</span>. Podatki niso del repozitorija.</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="pravilo-za-vse-naslednje-vaje" class="level3">
 <h3 class="anchored" data-anchor-id="pravilo-za-vse-naslednje-vaje">Pravilo za vse naslednje vaje</h3>
@@ -1021,10 +1121,10 @@ plot(pca$x[, 1], pca$x[, 2], col = "red")
 </div>
 <section id="ustvarjanje-in-preklapljanje-med-vejami" class="level3">
 <h3 class="anchored" data-anchor-id="ustvarjanje-in-preklapljanje-med-vejami">Ustvarjanje in preklapljanje med vejami</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch                 <span class="co"># seznam lokalnih vej (* = trenutna)</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> nov-graf     <span class="co"># ustvari novo vejo in se premakni nanjo</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main            <span class="co"># vrni se na main</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> nov-graf     <span class="co"># izbriši vejo (ko je že združena)</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch                 <span class="co"># seznam lokalnih vej (* = trenutna)</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> nov-graf     <span class="co"># ustvari novo vejo in se premakni nanjo</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main            <span class="co"># vrni se na main</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> nov-graf     <span class="co"># izbriši vejo (ko je že združena)</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1041,19 +1141,19 @@ plot(pca$x[, 1], pca$x[, 2], col = "red")
 </section>
 <section id="primer-dela-na-veji" class="level3">
 <h3 class="anchored" data-anchor-id="primer-dela-na-veji">Primer dela na veji</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> nov-graf</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ... urejate datoteke ...</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Dodaj PCA graf z barvami po državah"</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin nov-graf</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> nov-graf</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ... urejate datoteke ...</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Dodaj PCA graf z barvami po državah"</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin nov-graf</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Ob prvem <code>push</code> nove veje vam GitHub izpiše povezavo za odprtje <strong>zahteve za združitev</strong> (<em>Pull Request</em>). To je predlog, da se veja združi v <code>main</code>, ki ga lahko pregledajo sodelavci.</p>
 </section>
 <section id="združevanje-merge-git-merge" class="level3">
 <h3 class="anchored" data-anchor-id="združevanje-merge-git-merge">Združevanje (<em>merge</em>): <code>git merge</code></h3>
 <p>Premaknite se na vejo, ki jo želite <strong>posodobiti</strong> (običajno <code>main</code>), in vanjo združite drugo vejo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge nov-graf</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge nov-graf</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="text"><code>Updating 0c879b4..a09a19b
 Fast-forward
  E4_struktura/pca.R | 12 ++++++++++++
@@ -1085,28 +1185,28 @@ Fast-forward
 </section>
 <section id="povzetek-ukazov-cheat-sheet" class="level2">
 <h2 class="anchored" data-anchor-id="povzetek-ukazov-cheat-sheet">Povzetek ukazov (<em>cheat sheet</em>)</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Ime Priimek"</span>   <span class="co"># enkratna nastavitev</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"naslov"</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>url<span class="op">&gt;</span>              <span class="co"># kopija repozitorija z GitHuba</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init                     <span class="co"># nov lokalni repozitorij</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status                   <span class="co"># kaj se je spremenilo</span></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="op">&lt;</span>datoteka<span class="op">&gt;</span>           <span class="co"># pripravi datoteko za commit</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .                    <span class="co"># pripravi vse spremembe v mapi</span></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"sporočilo"</span>    <span class="co"># shrani posnetek stanja</span></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push                     <span class="co"># pošlji commite na GitHub</span></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                     <span class="co"># prenesi in združi spremembe z GitHuba</span></span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span>            <span class="co"># zgodovina commitov</span></span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff                     <span class="co"># neshranjene spremembe</span></span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore <span class="op">&lt;</span>datoteka<span class="op">&gt;</span>       <span class="co"># zavrzi spremembe v datoteki</span></span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore <span class="at">--staged</span> <span class="op">&lt;</span>dat.<span class="op">&gt;</span>  <span class="co"># odstrani datoteko iz pripravljalnega območja</span></span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch                   <span class="co"># seznam vej</span></span>
-<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> <span class="op">&lt;</span>ime<span class="op">&gt;</span>          <span class="co"># ustvari vejo in se premakni nanjo</span></span>
-<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="op">&lt;</span>ime<span class="op">&gt;</span>             <span class="co"># premakni se na obstoječo vejo</span></span>
-<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="op">&lt;</span>ime<span class="op">&gt;</span>              <span class="co"># združi vejo v trenutno vejo</span></span>
-<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> <span class="op">&lt;</span>ime<span class="op">&gt;</span>          <span class="co"># izbriši vejo</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Ime Priimek"</span>   <span class="co"># enkratna nastavitev</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"naslov"</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>url<span class="op">&gt;</span>              <span class="co"># kopija repozitorija z GitHuba</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init                     <span class="co"># nov lokalni repozitorij</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status                   <span class="co"># kaj se je spremenilo</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="op">&lt;</span>datoteka<span class="op">&gt;</span>           <span class="co"># pripravi datoteko za commit</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .                    <span class="co"># pripravi vse spremembe v mapi</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"sporočilo"</span>    <span class="co"># shrani posnetek stanja</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push                     <span class="co"># pošlji commite na GitHub</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                     <span class="co"># prenesi in združi spremembe z GitHuba</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span>            <span class="co"># zgodovina commitov</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff                     <span class="co"># neshranjene spremembe</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore <span class="op">&lt;</span>datoteka<span class="op">&gt;</span>       <span class="co"># zavrzi spremembe v datoteki</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore <span class="at">--staged</span> <span class="op">&lt;</span>dat.<span class="op">&gt;</span>  <span class="co"># odstrani datoteko iz pripravljalnega območja</span></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch                   <span class="co"># seznam vej</span></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> <span class="op">&lt;</span>ime<span class="op">&gt;</span>          <span class="co"># ustvari vejo in se premakni nanjo</span></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="op">&lt;</span>ime<span class="op">&gt;</span>             <span class="co"># premakni se na obstoječo vejo</span></span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="op">&lt;</span>ime<span class="op">&gt;</span>              <span class="co"># združi vejo v trenutno vejo</span></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> <span class="op">&lt;</span>ime<span class="op">&gt;</span>          <span class="co"># izbriši vejo</span></span></code></pre></div><button title="Kopiraj v odložišče" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Uradni povzetek ukazov z GitHuba (dve strani, v angleščini) si natisnite ali shranite: <a href="https://education.github.com/git-cheat-sheet-education.pdf"><strong>Git cheat sheet (PDF)</strong></a>.</p>
 </section>
 <section id="sec-naloga" class="level2">
